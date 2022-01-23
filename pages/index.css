@@ -16,3 +16,14 @@
 @import url(../blocks/name/__rectangle/name__rectangle.css);
 @import url(../blocks/pencil/pencil.css);
 @import url(../blocks/plus/plus.css);
+
+@import url(../blocks/elements/elements.css);
+@import url(../blocks/elements/__row/elements__row.css);
+@import url(../blocks/elements/__card/elements__card.css);
+@import url(../blocks/elements/__photo/elements__photo.css);
+@import url(../blocks/elements/__name/elements__name.css);
+@import url(../blocks/cardname/cardname.css);
+@import url(../blocks/like/like.css);
+
+@import url(../blocks/footer/footer.css);
+@import url(../blocks/footer/__copyright/footer__copyright.css);
