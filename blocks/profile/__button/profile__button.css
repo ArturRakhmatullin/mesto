@@ -1,0 +1,15 @@
+.profile__button {
+    width: 148px;
+    height: 48px;
+    border: 2px solid #ffffff;
+    border-radius: 2px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@media screen and (max-width: 635px) {
+    .profile__button {
+        width: 278px;
+    }
+}
