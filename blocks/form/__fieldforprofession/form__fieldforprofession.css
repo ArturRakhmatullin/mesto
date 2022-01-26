@@ -1,0 +1,15 @@
+.form__fieldforprofession {
+    width: 358px;
+    height: 27px;
+    margin-left: 36px;
+    margin-top: 30px;
+    border-bottom: 1px solid;
+    border-bottom-color: rgba(0, 0, 0, 0.2);
+}
+
+@media screen and (max-width: 460px) {
+    .form__fieldforprofession {
+        width: 238px;
+        margin-left: 22px;
+    }
+}

@@ -13,3 +13,7 @@
         width: 278px;
     }
 }
+
+.profile__button:hover {
+    opacity: .6;
+}
