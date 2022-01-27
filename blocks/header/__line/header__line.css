@@ -5,9 +5,15 @@
     padding-bottom: 40px;
 }
 
-@media screen and (max-width: 880px) {
+@media screen and (max-width: 899px) {
     .header__line {
-        width: 100vw;
+        width: 90vw;
         padding-bottom: 42px;
+    }
+}
+
+@media screen and (max-width: 320px) {
+    .header {
+        width: 99vw;
     }
 }

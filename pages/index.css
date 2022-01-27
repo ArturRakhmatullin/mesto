@@ -33,8 +33,11 @@
 @import url(../blocks/form/__description/form__description.css);
 @import url(../blocks/form/__fieldforname/form__fieldforname.css);
 @import url(../blocks/form/__fieldforprofession/form__fieldforprofession.css);
-@import url(../blocks/form/__textforedit/form__textforedit.css);
+@import url(../blocks/form/__nameforedit/form__nameforedit.css);
+@import url(../blocks/form/__professionforedit/form__professionforedit.css);
 @import url(../blocks/form/__button/form__button.css);
 @import url(../blocks/buttonname/buttonname.css);
 
 @import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__form/popup__form.css);
+@import url(../blocks/popup-opened/popup-opened.css);
