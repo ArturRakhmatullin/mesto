@@ -8,3 +8,7 @@
     margin-left: 18px;
     margin-bottom: 1px;
 }
+
+.name__rectangle:hover {
+    opacity: .6;
+}
