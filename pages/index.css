@@ -1,21 +1,16 @@
 @import url(../blocks/root/root.css);
+@import url(../fonts/font.css);
 
 @import url(../blocks/header/header.css);
 @import url(../blocks/header/__logo/header__logo.css);
-@import url(../blocks/header/__line/header__line.css);
 
 @import url(../blocks/profile/profile.css);
 @import url(../blocks/profile/__avatar/profile__avatar.css);
 @import url(../blocks/profile/__info/profile__info.css);
+@import url(../blocks/profile/__name/profile__name.css);
+@import url(../blocks/profile/__rename/profile__rename.css);
+@import url(../blocks/profile/__profession/profile__profession.css);
 @import url(../blocks/profile/__button/profile__button.css);
-
-@import url(../blocks/name/name.css);
-@import url(../blocks/name/__content/name__content.css);
-@import url(../blocks/profession/profession.css);
-
-@import url(../blocks/name/__rectangle/name__rectangle.css);
-@import url(../blocks/pencil/pencil.css);
-@import url(../blocks/plus/plus.css);
 
 @import url(../blocks/elements/elements.css);
 @import url(../blocks/elements/__row/elements__row.css);
@@ -28,16 +23,15 @@
 @import url(../blocks/footer/footer.css);
 @import url(../blocks/footer/__copyright/footer__copyright.css);
 
-@import url(../blocks/form/form.css);
-@import url(../blocks/form/__close/form__close.css);
-@import url(../blocks/form/__description/form__description.css);
-@import url(../blocks/form/__fieldforname/form__fieldforname.css);
-@import url(../blocks/form/__fieldforprofession/form__fieldforprofession.css);
-@import url(../blocks/form/__nameforedit/form__nameforedit.css);
-@import url(../blocks/form/__professionforedit/form__professionforedit.css);
-@import url(../blocks/form/__button/form__button.css);
-@import url(../blocks/buttonname/buttonname.css);
-
 @import url(../blocks/popup/popup.css);
+@import url(../blocks/popup/__container/popup__container.css);
+@import url(../blocks/popup/__close/popup__close.css);
+
+@import url(../blocks/popup/__description/popup__description.css);
 @import url(../blocks/popup/__form/popup__form.css);
+
+@import url(../blocks/popup/__nameforedit/popup__nameforedit.css);
+@import url(../blocks/popup/__professionforedit/popup__professionforedit.css);
+@import url(../blocks/popup/__submit/popup__submit.css);
+
 @import url(../blocks/popup-opened/popup-opened.css);

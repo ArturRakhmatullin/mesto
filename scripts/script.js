@@ -1,12 +1,12 @@
 let root = document.querySelector('.root');
-const profileName = root.querySelector('.name__content');
-const profileProfession = root.querySelector('.profession');
+const profileName = root.querySelector('.profile__name');
+const profileProfession = root.querySelector('.profile__profession');
 let popup = root.querySelector('.popup');
-let pencil = root.querySelector('.name__rectangle');
-let close = root.querySelector('.form__close');
-let formElement = root.querySelector('.popup__form');
-let nameInput = root.querySelector('.form__nameforedit');
-let jobInput = root.querySelector('.form__professionforedit');
+let pencil = root.querySelector('.profile__rename');
+let close = root.querySelector('.popup__close');
+let formElement = root.querySelector('.popup__container');
+let nameInput = root.querySelector('.popup__nameforedit');
+let jobInput = root.querySelector('.popup__professionforedit');
 
 
 function openPopup() {
@@ -28,7 +28,6 @@ function formSubmitHandler (evt) {
     profileProfession.textContent = jobValue;
     closePopup();
 }
-
 
 pencil.addEventListener('click', openPopup);
 
