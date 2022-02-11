@@ -9,7 +9,7 @@
     height: 24px;
     align-self: flex-end;
     margin-left: 18px;
-    padding-bottom: 0px;
+    align-self: center;
     cursor: pointer;
     transition: opacity .5s;
 }

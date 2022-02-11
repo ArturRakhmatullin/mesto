@@ -15,58 +15,56 @@
     <section class="profile">
         <img class="profile__avatar" src="./images/image.png" alt="Аватарка">
         <div class="profile__info">
-            <h2 class="profile__name"> Жак-Ив Кусто </h2>
+            <h1 class="profile__name"> Жак-Ив Кусто </h1>
             <button class="profile__rename" aria-label="change" type="button"></button>
             <p class="profile__profession"> Исследователь океана </p>
         </div>
         <button class="profile__button" aria-label="change" type="button"></button>
     </section>
 
-    <section class="elements">
-        <div class="elements__row">        
+    <section class="elements elements__row">
             <div class="elements__card">
                 <img src="./images/Karachaevsk.png" class="elements__photo" alt="Карачаевск">
                 <div class="elements__name">
-                    <h3 class="cardname"> Карачаевск </h3>
-                    <button class="like" aria-label="Отправить реакцию «нравится»" type="button"></button>
+                    <h2 class="elements__cardname"> Карачаевск </h2>
+                    <button class="elements__like" aria-label="Отправить реакцию «нравится»" type="button"></button>
                 </div>
             </div>
             <div class="elements__card">
                 <img src="./images/Elbrus.png" class="elements__photo" alt="Эльбрус">
                 <div class="elements__name">
-                    <h3 class="cardname"> Гора Эльбрус </h3>
-                    <button class="like" aria-label="Отправить реакцию «нравится»" type="button"></button>
+                    <h2 class="elements__cardname"> Гора Эльбрус </h2>
+                    <button class="elements__like" aria-label="Отправить реакцию «нравится»" type="button"></button>
                 </div>
             </div>
             <div class="elements__card">
                 <img src="./images/Dombai.png" class="elements__photo" alt="Домбай">
                 <div class="elements__name">
-                    <h3 class="cardname"> Домбай </h3>
-                    <button class="like" aria-label="Отправить реакцию «нравится»" type="button"></button>
+                    <h2 class="elements__cardname"> Домбай </h2>
+                    <button class="elements__like" aria-label="Отправить реакцию «нравится»" type="button"></button>
                 </div>
             </div>
             <div class="elements__card">
                 <img src="./images/Elbrus.png" class="elements__photo" alt="Эльбрус">
                 <div class="elements__name">
-                    <h3 class="cardname"> Гора Эльбрус </h3>
-                    <button class="like" aria-label="Отправить реакцию «нравится»" type="button"></button>
+                    <h2 class="elements__cardname"> Гора Эльбрус </h2>
+                    <button class="elements__like" aria-label="Отправить реакцию «нравится»" type="button"></button>
                 </div>
             </div>
             <div class="elements__card">
                 <img src="./images/Dombai.png" class="elements__photo" alt="Домбай">
                 <div class="elements__name">
-                    <h3 class="cardname"> Домбай </h3>
-                    <button class="like" aria-label="Отправить реакцию «нравится»" type="button"></button>
+                    <h2 class="elements__cardname"> Домбай </h2>
+                    <button class="elements__like" aria-label="Отправить реакцию «нравится»" type="button"></button>
                 </div>
             </div>
             <div class="elements__card">
                 <img src="./images/Karachaevsk.png" class="elements__photo" alt="Карачаевск">
                 <div class="elements__name">
-                    <h3 class="cardname"> Карачаево-Черкесия </h3>
-                    <button class="like" aria-label="Отправить реакцию «нравится»" type="button"></button>
+                    <h2 class="elements__cardname"> Карачаево-Черкесия </h2>
+                    <button class="elements__like" aria-label="Отправить реакцию «нравится»" type="button"></button>
                 </div>
             </div>
-        </div>
       </section>
 
     <footer class="footer">
@@ -77,11 +75,11 @@
             <div class="popup__container">
                 <button class="popup__close" aria-label="close" type="button"></button>
 
-                <p class="popup__description"> Редактировать профиль </p>
+                <h2 class="popup__description"> Редактировать профиль </h2>
 
                 <form class="popup__form" action="/" name="popup-form">
-                    <input class="popup__nameforedit" type="text" value="">
-                    <input class="popup__professionforedit" type="text" value="">
+                    <input class="popup__placefortext popup__placefortext_name" name="name" type="text" value="" placeholder="Имя" required>
+                    <input class="popup__placefortext popup__placefortext_profession" name="profession" type="text" value="" placeholder="Описание" required>
                     <button class="popup__submit" type="submit"> Сохранить </button>
                 </form>
             </div>

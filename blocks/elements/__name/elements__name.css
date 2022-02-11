@@ -1,11 +1,10 @@
 .elements__name {
     width: 246px;
-    height: 23px;
     margin: auto;
     display: flex;
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
-    margin-top: 21px;
-    margin-bottom: 31px;
+    margin-top: 18px;
+    margin-bottom: 29px;
 }

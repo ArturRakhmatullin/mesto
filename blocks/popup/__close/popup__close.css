@@ -2,14 +2,16 @@
     position: absolute;
     width: 32px;
     height: 32px;
-    margin-left: 438px;
-    margin-top: -40px;
+    right: -40px;
+    top: -40px;
     background: none;
     background-image: url(../../../images/CloseIcon.svg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
     border: none;
+    cursor: pointer;
+    transition: opacity .5s;
 }
 
 .popup__close:hover {
@@ -20,8 +22,8 @@
   .popup__close {
         width: 20px;
         height: 20px;
-        margin-left: 262px;
-        margin-top: -36px;
+        right: 0px;
+        top: -36px;
         object-fit: cover;
   }
 }

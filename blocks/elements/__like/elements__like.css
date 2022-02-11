@@ -1,16 +1,16 @@
-.like {
+.elements__like {
    width: 22px;
    height: 19px;
-   background-image: url(../../images/heart.svg);
+   background-color: transparent;
+   background-image: url(../../../images/heart.svg);
    background-position: center;
    background-size: contain;
    align-self: center;
    border: none;
-   background-color: #FFFFFF;
    background-repeat: no-repeat;
    cursor: pointer;
 }
 
-.like:hover {
+.elements__like:hover {
    opacity: .5;
 }
