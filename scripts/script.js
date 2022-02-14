@@ -5,8 +5,8 @@ let popup = root.querySelector('.popup');
 let pencil = root.querySelector('.profile__rename');
 let close = root.querySelector('.popup__close');
 let formElement = root.querySelector('.popup__form');
-let nameInput = root.querySelector('.popup__placefortext_name_filled');
-let jobInput = root.querySelector('.popup__placefortext_profession_filled');
+let nameInput = root.querySelector('.popup__placefortext_content_name');
+let jobInput = root.querySelector('.popup__placefortext_content_profession');
 
 function openPopup() {
     popup.classList.add('popup_opened');
