@@ -22,51 +22,11 @@
             <button class="profile__button" aria-label="Меняем описание" type="button"></button>
         </section>
 
-        <section class="elements">
-            <div class="elements__card">
-                <img src="./images/Karachaevsk.png" class="elements__photo" alt="Карачаевск">
-                <div class="elements__name">
-                    <h2 class="elements__cardname"> Карачаевск </h2>
-                    <button class="elements__like" aria-label="Отправить реакцию «нравится»" type="button"></button>
-                </div>
-            </div>
-            <div class="elements__card">
-                <img src="./images/Elbrus.png" class="elements__photo" alt="Эльбрус">
-                <div class="elements__name">
-                    <h2 class="elements__cardname"> Гора Эльбрус </h2>
-                    <button class="elements__like" aria-label="Отправить реакцию «нравится»" type="button"></button>
-                </div>
-            </div>
-            <div class="elements__card">
-                <img src="./images/Dombai.png" class="elements__photo" alt="Домбай">
-                <div class="elements__name">
-                    <h2 class="elements__cardname"> Домбай </h2>
-                    <button class="elements__like" aria-label="Отправить реакцию «нравится»" type="button"></button>
-                </div>
-            </div>
-            <div class="elements__card">
-                <img src="./images/Elbrus.png" class="elements__photo" alt="Эльбрус">
-                <div class="elements__name">
-                    <h2 class="elements__cardname"> Гора Эльбрус </h2>
-                    <button class="elements__like" aria-label="Отправить реакцию «нравится»" type="button"></button>
-                </div>
-            </div>
-            <div class="elements__card">
-                <img src="./images/Dombai.png" class="elements__photo" alt="Домбай">
-                <div class="elements__name">
-                    <h2 class="elements__cardname"> Домбай </h2>
-                    <button class="elements__like" aria-label="Отправить реакцию «нравится»" type="button"></button>
-                </div>
-            </div>
-            <div class="elements__card">
-                <img src="./images/Karachaevsk.png" class="elements__photo" alt="Карачаевск">
-                <div class="elements__name">
-                    <h2 class="elements__cardname"> Карачаево-Черкесия </h2>
-                    <button class="elements__like" aria-label="Отправить реакцию «нравится»" type="button"></button>
-                </div>
-            </div>
-      </section>
+        <section class="cards">
+        </section>
+
     </main>
+
     <footer class="footer">
         <p class="footer__copyright"> &copy; 2021. Mesto Russia </p>
     </footer>
@@ -98,6 +58,25 @@
                 </form>
             </div>
         </div>
+
+        <div class="fullscreen">
+            <div class="fullscreen__container">
+                <button class="fullscreen__close" aria-label="close" type="button"></button>
+                <img class="fullscreen__image" alt="Во весь экран">
+                <p class="fullscreen__title"></p>
+            </div>
+        </div>
+       
+        <template id="elements">
+            <div class="elements__card">
+                <button class="elements__delete" aria-label="Удалить" type="button"></button>
+                <img class="elements__photo" alt="Элемент">
+              <div class="elements__name">
+                  <h2 class="elements__cardname"></h2>
+                  <button class="elements__like" aria-label="Отправить реакцию «нравится»" type="button"></button>
+              </div>
+            </div>
+        </template>
 
     <script src="./scripts/script.js"></script>
   </body>

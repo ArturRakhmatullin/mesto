@@ -1,4 +1,4 @@
-.popupagain_opened {
+.fullscreen_opened {
     display: flex;
     animation: fadeIn 0.5s;
 }
