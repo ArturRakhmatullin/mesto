@@ -80,8 +80,8 @@ formElementAgain.addEventListener('submit', submitFormHandlerAgain);
 
 function submitFormHandler (evt) {
     evt.preventDefault();
-    let nameValue = nameInput.value;
-    let jobValue = jobInput.value;
+    const nameValue = nameInput.value;
+    const jobValue = jobInput.value;
     profileName.textContent = nameValue;
     profileProfession.textContent = jobValue;
     closePopup();
