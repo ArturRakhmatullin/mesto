@@ -33,7 +33,7 @@ const card = document.querySelector(".elements__card");
 const cards = document.querySelector(".cards");
 const popup = document.querySelector(".popup");
 const popupRenameUser = document.querySelector(".popup_type_rename");
-const popupAppendCard = document.querySelector(".popup__type_append-card");
+const popupAppendCard = document.querySelector(".popup_type_append");
 const popupBigScreen = document.querySelector(".popup__type_fullscreen");
 
 const openPopupRenameUserButton = document.querySelector(".profile__rename");
