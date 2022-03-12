@@ -48,7 +48,7 @@ const jobInput = document.querySelector(".popup__info_type_profession");
 const placeInput = document.querySelector(".popup__info_type_place");
 const linkInput = document.querySelector(".popup__info_type_email");
 
-const formElement = document.querySelector(".popup__form_type_rename-user");
+const formElement = document.querySelector(".popup__form_rename");
 const formElementCard = document.querySelector(".popup__form_type_append-card");
 const profileName = document.querySelector(".profile__name");
 const profileProfession = document.querySelector(".profile__profession");
