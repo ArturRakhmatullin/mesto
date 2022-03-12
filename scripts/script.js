@@ -27,30 +27,34 @@ const initialCards = [
 
 
 const root = document.querySelector('.root');
-const profileName = root.querySelector('.profile__name');
-const profileProfession = root.querySelector('.profile__profession');
 
-const elementsTemplate = root.querySelector('#elements').content;
-const cards = root.querySelector('.cards');
+const template = document.querySelector("#elements").content;
+const card = document.querySelector(".elements__card");
+const cards = document.querySelector(".cards");
+const popup = document.querySelector(".popup");
+const popupRenameUser = document.querySelector(".popup__type_rename-user");
+const popupAppendCard = document.querySelector(".popup__type_append-card");
+const popupBigScreen = document.querySelector(".popup__type_fullscreen");
 
-const newNamePopup = root.querySelector('.newnamepopup');
-const pencil = root.querySelector('.profile__rename');
-const closeButton = root.querySelector('.popup__close');
-const formElement = root.querySelector('.popup__form');
-const nameInput = root.querySelector('.popup__placefortext_content_name');
-const jobInput = root.querySelector('.popup__placefortext_content_profession');
+const openPopupRenameUserButton = document.querySelector(".profile__rename");
+const closePopupRenameUserButton = document.querySelector(".popup__close_type_rename-user");
+const openPopupAppendCardButton = document.querySelector(".profile__button");
+const closePopupAppendCardButton = document.querySelector(".popup__close_type_append-card");
+const openPopupBigScreen = document.querySelector(".card__image");
+const closePopupFullScreen = document.querySelector(".popup__close_type_fullscreen");
 
-const addNewCard = root.querySelector('.profile__button');
-const newPlacePopup = root.querySelector('.popupagain');
-const closeButtonAgain = root.querySelector('.popupagain__close');
-const formElementAgain = root.querySelector('.popupagain__form');
-const titleInput = root.querySelector('.popupagain__placefortext_content_title');
-const linkInput = root.querySelector('.popupagain__placefortext_content_link');
+const nameInput = document.querySelector(".popup__info_type_name");
+const jobInput = document.querySelector(".popup__info_type_profession");
+const placeInput = document.querySelector(".popup__info_type_place");
+const linkInput = document.querySelector(".popup__info_type_email");
 
-const fullscreen = root.querySelector('.fullscreen');
-const fullscreenImg = root.querySelector('.fullscreen__image');
-const fullscreenTitle = root.querySelector('.fullscreen__title');
-const fullscreenClose = root.querySelector('.fullscreen__close');
+const formElement = document.querySelector(".popup__form_type_rename-user");
+const formElementCard = document.querySelector(".popup__form_type_append-card");
+const profileName = document.querySelector(".profile__name");
+const profileProfession = document.querySelector(".profile__profession");
+
+const fullscreenImg = document.querySelector(".popup__image");
+const fullscreenTitle = document.querySelector(".popup__name");
 
 function openPopup(popup){
   popup.classList.add('popup_opened');
@@ -61,22 +65,35 @@ function closePopup() {
 }
 
 function openNewNamePopup(){
-  openPopup(newNamePopup);
+  openPopup(popupRenameUser);
 }
 
-pencil.addEventListener('click', openNewNamePopup);
-closeButton.addEventListener('click', closePopup);
-formElement.addEventListener('submit', submitFormHandler); 
+root.addEventListener('keydown', function (evt) {
+    if (evt.key === 'Escape') {
+    closePopup();
+    };
+});
+
+const closePopupOverlay = (evt) => {
+  if (evt.target === evt.currentTarget)
+  evt.target.classList.remove('popup_opened');
+};
+
+openPopupRenameUserButton.addEventListener('click', openNewNamePopup);
+closePopupRenameUserButton.addEventListener('click', closePopup);
+popupRenameUser.addEventListener('click', closePopupOverlay);
+formElement.addEventListener('submit', submitFormHandler);
 
 function openNewPlacePopup(){
   nameInput.value = profileName.textContent;
   jobInput.value = profileProfession.textContent;
-  openPopup(newPlacePopup);
+  openPopup(popupAppendCard);
 }
 
-addNewCard.addEventListener('click', openNewPlacePopup);
-closeButtonAgain.addEventListener('click', closePopup);
-formElementAgain.addEventListener('submit', submitFormHandlerAgain);
+openPopupAppendCardButton.addEventListener('click', openNewPlacePopup);
+closePopupAppendCardButton.addEventListener('click', closePopup);
+popupAppendCard.addEventListener('click', closePopupOverlay);
+formElementCard.addEventListener('submit', submitFormHandlerAgain); 
 
 function submitFormHandler (evt) {
     evt.preventDefault();
@@ -90,16 +107,18 @@ function submitFormHandler (evt) {
 function submitFormHandlerAgain (evt) {
     evt.preventDefault();
     const data = {
-    name: titleInput.value,
+    name: placeInput.value,
     link: linkInput.value,
 };
     addCard(data);
     evt.target.reset();
+    const buttonElement = popupAppendCard.querySelector(".popup__submit");
+    buttonElement.classList.add("popup__submit_disabled");
     closePopup();
 }
 
 const createCard = (item) => {
-    const cardElement = elementsTemplate.cloneNode(true);
+    const cardElement = template.cloneNode(true);
     const photo = cardElement.querySelector('.elements__photo');
     const title = cardElement.querySelector('.elements__cardname');
     const like = cardElement.querySelector('.elements__like');
@@ -134,10 +153,11 @@ function openPopupFullscreen(evt) {
     fullscreenImg.src = photo.src;
     fullscreenImg.alt = cardName.textContent;
     fullscreenTitle.textContent = cardName.textContent;
-    openPopup(fullscreen);
+    openPopup(popupBigScreen);
 }
 
-fullscreenClose.addEventListener('click', closePopup);
+closePopupFullScreen.addEventListener('click', closePopup);
+popupBigScreen.addEventListener('click', closePopupOverlay);
 
 function renderCards() {
    initialCards.forEach((el) => {

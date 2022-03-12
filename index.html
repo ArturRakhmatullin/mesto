@@ -11,6 +11,7 @@
     <header class="header">
         <img class="header__logo" src="./images/Vector.svg" alt="Лого_в_шапке">
     </header>
+
     <main>
         <section class="profile">
             <img class="profile__avatar" src="./images/image.png" alt="Аватарка">
@@ -31,39 +32,85 @@
         <p class="footer__copyright"> &copy; 2021. Mesto Russia </p>
     </footer>
     
-        <div class="popup newnamepopup">
+        <div class="popup popup__type_rename-user">
             <div class="popup__container">
-                <button class="popup__close" aria-label="close" type="button"></button>
+                <button class="popup__close popup__close_type_rename-user" aria-label="Закрыть попап" type="button"></button>
 
                 <h2 class="popup__description"> Редактировать профиль </h2>
 
-                <form class="popup__form" action="/" name="popup-form">
-                    <input class="popup__placefortext popup__placefortext_content_name" name="name" type="text" value="" placeholder="Имя" required>
-                    <input class="popup__placefortext popup__placefortext_content_profession" name="profession" type="text" value="" placeholder="Описание" required>
+                <form class="popup__form popup__form_type_rename-user" action="/" name="popup-form" novalidate>
+                    <label class="popup__label" for="username">
+                    <input 
+                    id="username"
+                    class="popup__info popup__info_type_name" 
+                    name="name" 
+                    type="text" 
+                    value="" 
+                    placeholder="Имя"
+                    minlength="2"
+                    maxlength="40" 
+                    required>
+                    <span class="popup__error popup__error_visible username-error"></span>
+                    </label>
+                    <label class="popup__label" for="userprofession">
+                    <input 
+                    id="userprofession"
+                    class="popup__info popup__info_type_profession" 
+                    name="profession" 
+                    type="text" 
+                    value="" 
+                    placeholder="Описание"
+                    minlength="2"
+                    maxlength="200"
+                    required>
+                    <span class="popup__error popup__error_visible profession-error"></span>
+                    </label>
                     <button class="popup__submit" type="submit"> Сохранить </button>
                 </form>
             </div>
         </div>
 
-        <div class="popupagain popup">
-            <div class="popupagain__container">
-                <button class="popupagain__close" aria-label="close" type="button"></button>
+        <div class="popup popup__type_append-card">
+            <div class="popup__container">
+                <button class="popup__close popup__close_type_append-card" aria-label="Закрыть попап" type="button"></button>
 
-                <h2 class="popupagain__description"> Новое место </h2>
+                <h2 class="popup__description"> Новое место </h2>
 
-                <form class="popupagain__form" action="/" name="popup-form">
-                    <input class="popupagain__placefortext popupagain__placefortext_content_title" name="name" type="text" value="" placeholder="Название" required>
-                    <input class="popupagain__placefortext popupagain__placefortext_content_link" name="profession" type="text" value="" placeholder="Ссылка на картинку" required>
-                    <button class="popupagain__submit" type="submit"> Создать </button>
+                <form class="popup__form popup__form_type_append-card" action="/" name="popup-form" novalidate>
+                    <label class="popup__label" for="place">
+                    <input 
+                    id="place"
+                    class="popup__info popup__info_type_place" 
+                    name="newplace" 
+                    type="text" 
+                    value="" 
+                    placeholder="Название" 
+                    minlength="2"
+                    maxlength="30"
+                    required>
+                    <span class="popup__error popup__error_visible place-error"></span>
+                    </label>
+                    <label class="popup__label" for="email">
+                    <input 
+                    id="email"
+                    class="popup__info popup__info_type_email" 
+                    name="link"
+                    type="url" 
+                    value="" 
+                    placeholder="Ссылка на картинку" 
+                    required>
+                    <span class="popup__error popup__error_visible email-error"></span>
+                    </label>
+                    <button class="popup__submit" type="submit"> Создать </button>
                 </form>
             </div>
         </div>
 
-        <div class="fullscreen popup">
-            <div class="fullscreen__container">
-                <button class="fullscreen__close" aria-label="close" type="button"></button>
-                <img class="fullscreen__image" alt="Во весь экран" src="/">
-                <p class="fullscreen__title"></p>
+        <div class="popup popup__type_fullscreen">
+            <div class="popup__container popup__container_type_fullscreen">
+                <button class="popup__close popup__close_type_fullscreen" aria-label="Закрыть попап" type="button"></button>
+                <img class="popup__image" alt="Во весь экран" src="/">
+                <p class="popup__name"></p>
             </div>
         </div>
        
@@ -79,5 +126,6 @@
         </template>
 
     <script src="./scripts/script.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>
