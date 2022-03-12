@@ -1,37 +1,9 @@
-const initialCards = [
-    {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-  ];
-
-
 const root = document.querySelector('.root');
 
 const template = document.querySelector("#elements").content;
 const card = document.querySelector(".elements__card");
 const cards = document.querySelector(".cards");
-const popup = document.querySelector(".popup");
+
 const popupRenameUser = document.querySelector(".popup_type_rename");
 const popupAppendCard = document.querySelector(".popup_type_append");
 const popupBigScreen = document.querySelector(".popup_type_fullscreen");
@@ -48,7 +20,7 @@ const jobInput = document.querySelector(".popup__info_type_profession");
 const placeInput = document.querySelector(".popup__info_type_place");
 const linkInput = document.querySelector(".popup__info_type_email");
 
-const formElement = document.querySelector(".popup__form_rename");
+const formProfileElement = document.querySelector(".popup__form_rename");
 const formElementCard = document.querySelector(".popup__form_type_append-card");
 const profileName = document.querySelector(".profile__name");
 const profileProfession = document.querySelector(".profile__profession");
@@ -58,31 +30,36 @@ const fullscreenTitle = document.querySelector(".popup__name");
 
 function openPopup(popup){
   popup.classList.add('popup_opened');
+  root.addEventListener('keydown',  closeByEsc)
 }
 
 function closePopup() {
   root.querySelector('.popup_opened').classList.remove('popup_opened');
+  root.removeEventListener('keydown',  closeByEsc)
 }
 
 function openNewNamePopup(){
+  nameInput.value = profileName.textContent;
+  jobInput.value = profileProfession.textContent;
   openPopup(popupRenameUser);
 }
 
-root.addEventListener('keydown', function (evt) {
-    if (evt.key === 'Escape') {
-    closePopup();
-    };
-});
+function closeByEsc(evt) {
+  if (evt.key === 'Escape') {
+    const openedPopup = root.querySelector('.popup_opened');
+    closePopup(openedPopup); 
+  }
+} 
 
 const closePopupOverlay = (evt) => {
   if (evt.target === evt.currentTarget)
-  evt.target.classList.remove('popup_opened');
+  closePopup();
 };
 
 openPopupRenameUserButton.addEventListener('click', openNewNamePopup);
 closePopupRenameUserButton.addEventListener('click', closePopup);
 popupRenameUser.addEventListener('click', closePopupOverlay);
-formElement.addEventListener('submit', submitFormHandler);
+formProfileElement.addEventListener('submit', submitProfileForm);
 
 function openNewPlacePopup(){
   nameInput.value = profileName.textContent;
@@ -93,9 +70,9 @@ function openNewPlacePopup(){
 openPopupAppendCardButton.addEventListener('click', openNewPlacePopup);
 closePopupAppendCardButton.addEventListener('click', closePopup);
 popupAppendCard.addEventListener('click', closePopupOverlay);
-formElementCard.addEventListener('submit', submitFormHandlerAgain); 
+formElementCard.addEventListener('submit', submitAddCardForm); 
 
-function submitFormHandler (evt) {
+function submitProfileForm (evt) {
     evt.preventDefault();
     const nameValue = nameInput.value;
     const jobValue = jobInput.value;
@@ -104,7 +81,7 @@ function submitFormHandler (evt) {
     closePopup();
 }
 
-function submitFormHandlerAgain (evt) {
+function submitAddCardForm (evt) {
     evt.preventDefault();
     const data = {
     name: placeInput.value,
@@ -114,6 +91,7 @@ function submitFormHandlerAgain (evt) {
     evt.target.reset();
     const buttonElement = popupAppendCard.querySelector(".popup__submit");
     buttonElement.classList.add("popup__submit_disabled");
+    buttonElement.setAttribute("disabled", "disabled");
     closePopup();
 }
 
@@ -159,10 +137,3 @@ function openPopupFullscreen(evt) {
 closePopupFullScreen.addEventListener('click', closePopup);
 popupBigScreen.addEventListener('click', closePopupOverlay);
 
-function renderCards() {
-   initialCards.forEach((el) => {
-     cards.append(createCard(el));
-   });
-}
-
-renderCards();
