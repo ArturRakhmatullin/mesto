@@ -56,12 +56,11 @@ const enableValidation = () => {
   });
 };
 
-
 enableValidation({
   formElement: '.popup__form',
   inputElement: '.popup__info',
-  submitButtonSelector: '.popup__button',
-  inactiveButtonClass: 'popup__button_disabled',
+  submitButtonSelector: '.popup__submit',
+  inactiveButtonClass: 'popup__submit_disabled',
   inputErrorClass: 'popup__info_type_error',
   errorClass: 'popup__error_visible'
 });
