@@ -1,5 +1,5 @@
-import Card from "./Card.js";
-import FormValidator from "./FormValidator.js";
+import { Card } from "./Card.js";
+import { FormValidator } from "./FormValidator.js";
 
 const selectorsNamesForValidation = {
   formSelector: ".popup__form",
@@ -37,7 +37,7 @@ const validatorFromForAddCard = new FormValidator(
   formForAddCard
 );
 
-export function openPopup(popup) {
+function openPopup(popup) {
   popup.classList.add("popup_opened");
   document.addEventListener("keydown", closeByEsc);
 }
@@ -118,4 +118,4 @@ popupList.forEach((item) => {
   });
 });
 
-export { openPopup }
+export { openPopup };
