@@ -37,7 +37,7 @@ const validatorFromForAddCard = new FormValidator(
   formForAddCard
 );
 
-function openPopup(popup) {
+export function openPopup(popup) {
   popup.classList.add("popup_opened");
   document.addEventListener("keydown", closeByEsc);
 }
@@ -117,5 +117,3 @@ popupList.forEach((item) => {
     }
   });
 });
-
-export { openPopup };
