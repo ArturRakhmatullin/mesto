@@ -10,8 +10,8 @@ export default class Card {
 	
 	  _getTemplate() {
 	    const cardElement = document
-	      .querySelector(this._cardSelector)
-	      .content.querySelector(".elements__cardname")
+	      .querySelector(this._cardSelector);
+	      .content.querySelector(".elements__card");
 	      .cloneNode(true);
 	
 	    return cardElement;
@@ -22,7 +22,7 @@ export default class Card {
 	  }
 
 	  _removeCard(evt) {
-	    evt.target.closest(".elements__cardname").remove();
+	    evt.target.closest(".elements__card").remove();
 	  }
 
 	  _scaleImage(evt) {
@@ -52,39 +52,8 @@ export default class Card {
 	
 	    this._image.src = this._imageLink;
 	    this._image.alt = this._title;
-	    this._element.querySelector(".elements__cardname").textContent = this._title;
+	    this._element.querySelector(".elements__card").textContent = this._title;
 
 	    return this._element;
 	  }
 	}
-
-const initialCards = [
-    {
-      name: 'Архыз',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-      name: 'Челябинская область',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-      name: 'Иваново',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-      name: 'Камчатка',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-      name: 'Холмогорский район',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-      name: 'Байкал',
-      link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-  ];
-
-initialCards.forEach((item) => {
-	renderCard(cardElements, handleNewCard(item));
-  });
