@@ -58,7 +58,7 @@ export default class Card {
 	  }
 	}
 
-  const initialCards = [
+const initialCards = [
     {
       name: 'Архыз',
       link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
@@ -85,10 +85,6 @@ export default class Card {
     }
   ];
 
-  function renderCards() {
-    initialCards.forEach((el) => {
-      cards.append(createCard(el));
-    });
- }
- 
- renderCards();
+initialCards.forEach((item) => {
+	renderCard(cardElements, handleNewCard(item));
+  });
