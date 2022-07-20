@@ -24,12 +24,22 @@
         </section>
 
         <section class="cards">
+            <template id="elements">
+                <div class="elements__card">
+                    <button class="elements__delete" aria-label="Удалить" type="button"></button>
+                    <img class="elements__photo" alt="Элемент">
+                  <div class="elements__name">
+                      <h2 class="elements__cardname"></h2>
+                      <button class="elements__like" aria-label="Отправить реакцию «нравится»" type="button"></button>
+                  </div>
+                </div>
+            </template>    
         </section>
 
     </main>
 
     <footer class="footer">
-        <p class="footer__copyright"> &copy; 2021. Mesto Russia </p>
+        <p class="footer__copyright"> &copy; 2022. Mesto Russia </p>
     </footer>
     
         <div class="popup popup_type_rename">
@@ -111,16 +121,6 @@
             </div>
         </div>
        
-        <template id="elements">
-            <div class="elements__card">
-                <button class="elements__delete" aria-label="Удалить" type="button"></button>
-                <img class="elements__photo" alt="Элемент">
-              <div class="elements__name">
-                  <h2 class="elements__cardname"></h2>
-                  <button class="elements__like" aria-label="Отправить реакцию «нравится»" type="button"></button>
-              </div>
-            </div>
-        </template>
 
     <script src="./scripts/script.js"></script>
     <script src="./scripts/validate.js"></script>
