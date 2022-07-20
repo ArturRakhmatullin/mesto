@@ -118,6 +118,4 @@ popupList.forEach((item) => {
   });
 });
 
-
-
 export { openPopup }
