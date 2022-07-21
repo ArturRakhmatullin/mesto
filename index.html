@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Сервис Mesto">
   <link rel="stylesheet" href="./pages/index.css">
   <title>Сервис Mesto</title>
-  <meta name="description" content="Сервис Mesto">
 </head>
 
 <body class="root">
@@ -25,16 +25,7 @@
         </section>
 
         <section class="cards">
-            <template id="elements">
-                    <div class="elements__card">
-                            <button class="elements__delete" aria-label="Удалить" type="button"></button>
-                            <img class="elements__photo" alt="Элемент">
-                        <div class="elements__name">
-                            <h2 class="elements__cardname"></h2>
-                            <button class="elements__like" aria-label="Отправить реакцию «нравится»" type="button"></button>
-                        </div>
-                    </div>
-            </template>    
+            
         </section>
 
     </main>
@@ -122,6 +113,16 @@
             </div>
         </div>
        
+      <template id="elements">
+          <div class="elements__card">
+                  <button class="elements__delete" aria-label="Удалить" type="button"></button>
+                  <img class="elements__photo" alt="Элемент">
+              <div class="elements__name">
+                  <h2 class="elements__cardname"></h2>
+                  <button class="elements__like" aria-label="Отправить реакцию «нравится»" type="button"></button>
+              </div>
+          </div>
+      </template>    
 
     <script src="./scripts/index.js" type="module"></script>
     <script src="./scripts/FormValidator.js" type="module"></script>

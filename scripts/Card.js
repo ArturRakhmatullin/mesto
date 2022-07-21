@@ -1,60 +1,83 @@
-import { openPopup } from "./index.js";
+import { fullPhotoPopup, fullPhoto, openPopup, closePopupByEsc } from './index.js'
+export { initialCards, Card, renderCards }
 
-export default class Card {
-	  constructor(data, cardSelector) {
-	    this._title = data.name;
-	    this._imageLink = data.link;
-	    this._cardSelector = cardSelector;
-	    this._element = this._getTemplate();
-	  }
-	
-	  _getTemplate() {
-	    const cardElement = document
-	      .querySelector(this._cardSelector)
-	      .content
-		  .querySelector(".elements__card")
-	      .cloneNode(true);
-	
-	    return cardElement;
-	  }
+const initialCards = [
+    {
+        name: 'Архыз',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
+    },
+    {
+        name: 'Челябинская область',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
+    },
+    {
+        name: 'Иваново',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
+    },
+    {
+        name: 'Камчатка',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
+    },
+    {
+        name: 'Холмогорский район',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
+    },
+    {
+        name: 'Байкал',
+        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
+    }
+];
 
-	  _like(evt) {
-	    evt.target.classList.toggle("elements__like_active");
-	  }
+class Card {
+    constructor(name, link, cardSelector) {
+        this._name = name;
+        this._link = link;
+        this._cardSelector = cardSelector;
+    }
 
-	  _removeCard(evt) {
-	    evt.target.closest(".elements__card").remove();
-	  }
+    _getTemplate() {
+        const cardElement = document
+            .querySelector(this._cardSelector).content
+            .querySelector('.elements__card').cloneNode(true);
+        return cardElement;
+    }
 
-	  _scaleImage(evt) {
-	    this._popupForFullscreen = document.querySelector('.popup_type_fullscreen');
-	    this._formImg = document.querySelector('.popup__image');
-	    this._formImgTitle = document.querySelector('.popup__name');
-	    this._formImg.src = evt.target.src;
-	    this._formImg.alt = evt.target.alt;
-	    this._formImgTitle.textContent = evt.target.alt;
-	
-	    return openPopup(this._popupForFullscreen);
-	  }
-	
-	  _setEventListener() {
-	    this._image = this._element.querySelector(".elements__photo");
-	    this._element
-	      .querySelector(".elements__like")
-	      .addEventListener("click", this._like);
-	    this._element
-	      .querySelector(".elements__delete")
-	      .addEventListener("click", this._removeCard);
-	    this._image.addEventListener("click", this._scaleImage);
-	  }
-	
-	  generateCard() {
-	    this._setEventListener();
-	
-	    this._image.src = this._imageLink;
-	    this._image.alt = this._title;
-	    this._element.querySelector(".elements__card").textContent = this._title;
+    generateCard() {
+        this._element = this._getTemplate();
+        this._setEventListeners();
+        this._element.querySelector('.elements__cardname').textContent = this._name;
+        this._element.querySelector('.elements__photo').src = this._link;
+        return this._element;
+    }
 
-	    return this._element;
-	  }
-	}
+    _setEventListeners() {
+        this._element.querySelector('.elements__photo').addEventListener('click', () => { this._handleOpenFullPhotoPopup(fullPhotoPopup); });
+        this._element.querySelector('.elements__like').addEventListener('click', () => { this._handleLikeClick(event); });
+        this._element.querySelector('.elements__delete').addEventListener('click', () => { this._handleDeleteButton(event); })
+    }
+
+
+    _handleOpenFullPhotoPopup(fullPhotoPopup) {
+        fullPhoto.src = this._link;
+        fullPhoto.alt = this._name;
+        document.querySelector('.popup__name').textContent = this._name
+        openPopup(fullPhotoPopup);
+        document.addEventListener('keyup', closePopupByEsc);
+
+    }
+
+    _handleLikeClick(event) {
+        event.target.classList.toggle('elements__like_active');
+    }
+
+    _handleDeleteButton(event) {
+        const a = event.target.closest('.elements__card');
+        a.remove();
+    }
+}
+
+const renderCards = initialCards.forEach((item) => {
+    const card = new Card(item.name, item.link, '#card');
+    const cardElement = card.generateCard();
+    document.querySelector('.cards').prepend(cardElement);
+})
