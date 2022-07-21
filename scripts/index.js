@@ -1,17 +1,17 @@
 import { Card } from './card.js';
-import { config, FormValidator } from './formValidator.js'
-export { fullPhotoPopup, fullPhoto, openPopup, closePopupByEsc }
+import { config, FormValidator } from './formValidator.js';
+export { fullPhotoPopup, fullPhoto, openPopup, closePopupByEsc };
 
 const buttonEditProfile = document.querySelector('.profile__rename');
 const popupEditProfile = document.querySelector('.popup_type_rename');
 const formEditProfile = document.querySelector('.popup__form_rename');
 const name = document.querySelector('.profile__name');
-const about = document.querySelector('.profile__profession');
+const profession = document.querySelector('.profile__profession');
 const nameInput = formEditProfile.querySelector('.popup__info_type_name');
-const aboutInput = formEditProfile.querySelector('.popup__info_type_profession');
+const professionInput = formEditProfile.querySelector('.popup__info_type_profession');
 const buttonAddPlace = document.querySelector('.profile__button');
 const popupAddPlace = document.querySelector('.popup_type_append');
-const formAddPlace = document.querySelector('.popup__form_type_append-card')
+const formAddPlace = document.querySelector('.popup__form_type_append-card');
 const placeName = document.querySelector('.popup__info_type_place');
 const placeLink = document.querySelector('.popup__info_type_email');
 const photoCards = document.querySelector('.cards');
@@ -21,7 +21,6 @@ const fullPhoto = fullPhotoPopup.querySelector('.popup__image');
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keyup', closePopupByEsc);
-
 }
 
 function openPopupEditProfile() {
@@ -30,7 +29,7 @@ function openPopupEditProfile() {
   resetSpans(popupEditProfile);
   formEditProfile.reset();
   nameInput.value = name.textContent;
-  aboutInput.value = about.textContent;
+  professionInput.value = profession.textContent;
 }
 
 function openPopupAddPlace() {
@@ -47,14 +46,13 @@ function closePopup(popup) {
 
 const resetSpans = (popup) => {
   const errorSpans = popup.querySelectorAll('.popup__error');
-  const inputs = popup.querySelectorAll('.popup__info')
+  const inputs = popup.querySelectorAll('.popup__info');
   errorSpans.forEach((errorElement) => {
     errorElement.textContent = " "
-  })
+  });
   inputs.forEach((input) => {
-    input.classList.remove('popup__error_visible')
-  }
-  )
+    input.classList.remove('popup__info_type_error')
+  })
 }
 
 const resetButtonState = (popup) => {
@@ -65,34 +63,33 @@ const resetButtonState = (popup) => {
 
 const popups = document.querySelectorAll('.popup');
 popups.forEach((popup) => {
-
-  popup.addEventListener('click', (evt) => {
-    if ((evt.target === evt.currentTarget) || (evt.target.classList.contains('popup__close'))) {
+  popup.addEventListener('click', (event) => {
+    if ((event.target === event.currentTarget) || (event.target.classList.contains('popup__close'))) {
       closePopup(popup);
     }
   })
 })
 
-function closePopupByEsc(evt) {
-  if (evt.key === "Escape") {
+function closePopupByEsc(event) {
+  if (event.key === "Escape") {
     const popup = document.querySelector('.popup_opened');
     closePopup(popup);
   };
 }
 
-function editeProfileFormSubmitHandler(evt) {
-  evt.preventDefault();
+function editeProfileFormSubmitHandler(event) {
+  event.preventDefault();
   name.textContent = nameInput.value;
-  about.textContent = aboutInput.value;
+  profession.textContent = professionInput.value;
   closePopup(popupEditProfile);
   resetSpans(popupEditProfile);
   formEditProfile.reset();
 }
 
-function formAddPlaceSubmitHandler(evt) {
-  evt.preventDefault();
+function formAddPlaceSubmitHandler(event) {
+  event.preventDefault();
   closePopup(popupAddPlace);
-  const card = new Card(placeName.value, placeLink.value, '#card');
+  const card = new Card(placeName.value, placeLink.value, '#elements');
   const cardElement = card.generateCard();
   photoCards.prepend(cardElement);
   resetSpans(popupAddPlace);

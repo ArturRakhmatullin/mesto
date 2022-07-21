@@ -1,5 +1,5 @@
-import { fullPhotoPopup, fullPhoto, openPopup, closePopupByEsc } from './index.js'
-export { initialCards, Card, renderCards }
+import { fullPhotoPopup, fullPhoto, openPopup, closePopupByEsc } from './index.js';
+export { initialCards, Card, renderCards };
 
 const initialCards = [
     {
@@ -38,8 +38,7 @@ class Card {
     _getTemplate() {
         const cardElement = document
             .querySelector(this._cardSelector)
-			.content
-            .querySelector('.elements__card')
+			.content.querySelector('.elements__card')
 			.cloneNode(true);
         return cardElement;
     }
@@ -54,8 +53,8 @@ class Card {
 
     _setEventListeners() {
         this._element.querySelector('.elements__photo').addEventListener('click', () => { this._handleOpenFullPhotoPopup(fullPhotoPopup); });
-        this._element.querySelector('.elements__like').addEventListener('click', () => { this._handleLikeClick(evt); });
-        this._element.querySelector('.elements__delete').addEventListener('click', () => { this._handleDeleteButton(evt); });
+        this._element.querySelector('.elements__like').addEventListener('click', () => { this._handleLikeClick(event); });
+        this._element.querySelector('.elements__delete').addEventListener('click', () => { this._handleDeleteButton(event); });
     }
 
 
@@ -67,18 +66,18 @@ class Card {
         document.addEventListener('keyup', closePopupByEsc);
     }
 
-    _handleLikeClick(evt) {
-        evt.target.classList.toggle('elements__like_active');
+    _handleLikeClick(event) {
+        event.target.classList.toggle('elements__like_active');
     }
 
-    _handleDeleteButton(evt) {
-        const a = evt.target.closest('.elements__card');
-        a.remove();
+    _handleDeleteButton(event) {
+        const bin = event.target.closest('.elements__card');
+        bin.remove();
     }
 }
 
 const renderCards = initialCards.forEach((item) => {
-    const card = new Card(item.name, item.link, '#card');
+    const card = new Card(item.name, item.link, '#elements');
     const cardElement = card.generateCard();
     document.querySelector('.cards').prepend(cardElement);
 })

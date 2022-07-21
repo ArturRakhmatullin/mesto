@@ -1,11 +1,11 @@
-export { config, FormValidator }
+export { config, FormValidator };
 
 const config = {
     formSelector: '.popup__form',
     inputSelector: '.popup__info',
     submitButtonSelector: '.popup__submit',
     inactiveButtonClass: 'popup__submit_inactive',
-    inputErrorClass: 'popup__error',
+    inputErrorClass: 'popup__info_type_error',
     errorClass: 'popup__error_visible'
 }
 
@@ -16,14 +16,14 @@ class FormValidator {
     }
 
     _showInputError = (inputElement, errorMessage) => {
-        const errorElement = this._formElement.querySelector(`.${inputElement.id}-input-error`);
+        const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
         inputElement.classList.add(this._config.inputErrorClass);
         errorElement.textContent = errorMessage;
         errorElement.classList.add(this._config.errorClass);
     };
 
     _hideInputError = (inputElement) => {
-        const errorElement = this._formElement.querySelector(`.${inputElement.id}-input-error`);
+        const errorElement = this._formElement.querySelector(`.${inputElement.id}-error`);
         inputElement.classList.remove(this._config.inputErrorClass);
         errorElement.classList.remove(this._config.errorClass);
         errorElement.textContent = ' ';
@@ -49,7 +49,7 @@ class FormValidator {
 
     _hasInvalidInput = (inputList) => {
         return inputList.some((inputElement) => {
-            return !inputElement.validity.valid
+            return !inputElement.validity.valid;
         })
     }
 
