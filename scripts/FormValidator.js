@@ -15,7 +15,6 @@ class FormValidator {
         this._formElement = formElement;
     }
 
-    //Показать span и красное подчеркивание
     _showInputError = (inputElement, errorMessage) => {
         const errorElement = this._formElement.querySelector(`.${inputElement.id}-input-error`);
         inputElement.classList.add(this._config.inputErrorClass);
@@ -23,15 +22,13 @@ class FormValidator {
         errorElement.classList.add(this._config.errorClass);
     };
 
-    //Убрать span и красное подчеркивание
     _hideInputError = (inputElement) => {
         const errorElement = this._formElement.querySelector(`.${inputElement.id}-input-error`);
         inputElement.classList.remove(this._config.inputErrorClass);
         errorElement.classList.remove(this._config.errorClass);
         errorElement.textContent = ' ';
     };
-    //Проверить валидность поля
-
+  
     _isValid = (inputElement) => {
         if (!inputElement.validity.valid) {
             this._showInputError(inputElement, inputElement.validationMessage);
@@ -39,8 +36,6 @@ class FormValidator {
             this._hideInputError(inputElement);
         }
     }
-
-    //Изменить состояние кнопки
 
     _toggleButtonState = (inputList, buttonElement) => {
         if (this._hasInvalidInput(inputList)) {
@@ -51,15 +46,12 @@ class FormValidator {
             buttonElement.removeAttribute('disabled', '');
         }
     }
-    //Проверить, есть ли в форме хотя бы одно невалидное поле
 
     _hasInvalidInput = (inputList) => {
         return inputList.some((inputElement) => {
             return !inputElement.validity.valid
         })
     }
-
-    //Поставить обработчики на все инпуты
 
     _setEventListeners = () => {
         const inputList = Array.from(this._formElement.querySelectorAll(this._config.inputSelector));
@@ -72,7 +64,7 @@ class FormValidator {
             });
         })
     }
-    //Поставить обработчики на все формы
+
     enableValidation = () => {
         const formList = Array.from(document.querySelectorAll(this._config.formSelector));
         formList.forEach(() => {

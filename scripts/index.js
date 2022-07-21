@@ -18,15 +18,11 @@ const photoCards = document.querySelector('.cards');
 const fullPhotoPopup = document.querySelector('.popup_type_fullscreen');
 const fullPhoto = fullPhotoPopup.querySelector('.popup__image');
 
-// Открыть попап 
-
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keyup', closePopupByEsc);
 
 }
-
-// Открыть попап по изменению профиля
 
 function openPopupEditProfile() {
   openPopup(popupEditProfile);
@@ -37,8 +33,6 @@ function openPopupEditProfile() {
   aboutInput.value = about.textContent;
 }
 
-// Открыть попап по добавлению места
-
 function openPopupAddPlace() {
   openPopup(popupAddPlace);
   resetButtonState(popupAddPlace);
@@ -46,14 +40,11 @@ function openPopupAddPlace() {
   formAddPlace.reset();
 }
 
-// Закрыть попап
-
 function closePopup(popup) {
   popup.classList.remove('popup_opened');
   document.removeEventListener('keyup', closePopupByEsc);
 }
 
-// Убрать спаны и карсное подчеркивание
 const resetSpans = (popup) => {
   const errorSpans = popup.querySelectorAll('.popup__error');
   const inputs = popup.querySelectorAll('.popup__info')
@@ -66,15 +57,12 @@ const resetSpans = (popup) => {
   )
 }
 
-
-// Изменить состояние кнопки
 const resetButtonState = (popup) => {
   const button = popup.querySelector('.popup__submit');
   button.classList.add('popup__submit_inactive');
   button.setAttribute('disabled', '');
 }
 
-//Навесить листенер на оверлей и кнопку закрытия
 const popups = document.querySelectorAll('.popup');
 popups.forEach((popup) => {
 
@@ -85,15 +73,12 @@ popups.forEach((popup) => {
   })
 })
 
-//закрыть попап по ESC
 function closePopupByEsc(evt) {
   if (evt.key === "Escape") {
     const popup = document.querySelector('.popup_opened');
     closePopup(popup);
   };
 }
-
-// Засабмитить попап изменения профиля
 
 function editeProfileFormSubmitHandler(evt) {
   evt.preventDefault();
@@ -103,8 +88,6 @@ function editeProfileFormSubmitHandler(evt) {
   resetSpans(popupEditProfile);
   formEditProfile.reset();
 }
-
-//Засабмитить новое место
 
 function formAddPlaceSubmitHandler(evt) {
   evt.preventDefault();
@@ -116,22 +99,13 @@ function formAddPlaceSubmitHandler(evt) {
   formAddPlace.reset();
 }
 
-// Навесить листенер на кнопку открыть попап изменения профиля
-
 buttonEditProfile.addEventListener('click', openPopupEditProfile);
-
-// Навесить листенер на кнопку открыть попап добавления места
 
 buttonAddPlace.addEventListener('click', openPopupAddPlace);
 
-// Навесить листенер на кнопку сабмита изменения профиля
-
 formEditProfile.addEventListener('submit', editeProfileFormSubmitHandler);
 
-// Навесить листенер на кнопку сабмита создания нового места
-
 formAddPlace.addEventListener('submit', formAddPlaceSubmitHandler);
-
 
 const formList = document.querySelectorAll(config.formSelector);
 

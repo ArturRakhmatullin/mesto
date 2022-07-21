@@ -37,8 +37,10 @@ class Card {
 
     _getTemplate() {
         const cardElement = document
-            .querySelector(this._cardSelector).content
-            .querySelector('.elements__card').cloneNode(true);
+            .querySelector(this._cardSelector)
+			.content
+            .querySelector('.elements__card')
+			.cloneNode(true);
         return cardElement;
     }
 
@@ -52,26 +54,25 @@ class Card {
 
     _setEventListeners() {
         this._element.querySelector('.elements__photo').addEventListener('click', () => { this._handleOpenFullPhotoPopup(fullPhotoPopup); });
-        this._element.querySelector('.elements__like').addEventListener('click', () => { this._handleLikeClick(event); });
-        this._element.querySelector('.elements__delete').addEventListener('click', () => { this._handleDeleteButton(event); })
+        this._element.querySelector('.elements__like').addEventListener('click', () => { this._handleLikeClick(evt); });
+        this._element.querySelector('.elements__delete').addEventListener('click', () => { this._handleDeleteButton(evt); });
     }
 
 
     _handleOpenFullPhotoPopup(fullPhotoPopup) {
         fullPhoto.src = this._link;
         fullPhoto.alt = this._name;
-        document.querySelector('.popup__name').textContent = this._name
+        document.querySelector('.popup__name').textContent = this._name;
         openPopup(fullPhotoPopup);
         document.addEventListener('keyup', closePopupByEsc);
-
     }
 
-    _handleLikeClick(event) {
-        event.target.classList.toggle('elements__like_active');
+    _handleLikeClick(evt) {
+        evt.target.classList.toggle('elements__like_active');
     }
 
-    _handleDeleteButton(event) {
-        const a = event.target.closest('.elements__card');
+    _handleDeleteButton(evt) {
+        const a = evt.target.closest('.elements__card');
         a.remove();
     }
 }
