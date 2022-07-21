@@ -1,26 +1,37 @@
 import { Card } from './card.js';
 import { config, FormValidator } from './formValidator.js';
-export { fullPhotoPopup, fullPhoto, openPopup, closePopupByEsc };
+export { popupBigScreen, fullscreenImg, openPopup, closePopupByEsc };
 
-const buttonEditProfile = document.querySelector('.profile__rename');
 const popupEditProfile = document.querySelector('.popup_type_rename');
+const popupAddPlace = document.querySelector('.popup_type_append');
+const popupBigScreen = document.querySelector('.popup_type_fullscreen');
+
+const openPopupRenameUserButton = document.querySelector('.profile__rename');
+const openPopupAppendCardButton = document.querySelector('.profile__button');
+
 const formEditProfile = document.querySelector('.popup__form_rename');
+const formAddPlace = document.querySelector('.popup__form_type_append-card');
+const formList = document.querySelectorAll(config.formSelector);
+
 const name = document.querySelector('.profile__name');
 const profession = document.querySelector('.profile__profession');
+
 const nameInput = formEditProfile.querySelector('.popup__info_type_name');
 const professionInput = formEditProfile.querySelector('.popup__info_type_profession');
-const buttonAddPlace = document.querySelector('.profile__button');
-const popupAddPlace = document.querySelector('.popup_type_append');
-const formAddPlace = document.querySelector('.popup__form_type_append-card');
-const placeName = document.querySelector('.popup__info_type_place');
-const placeLink = document.querySelector('.popup__info_type_email');
-const photoCards = document.querySelector('.cards');
-const fullPhotoPopup = document.querySelector('.popup_type_fullscreen');
-const fullPhoto = fullPhotoPopup.querySelector('.popup__image');
+const placeInput = document.querySelector('.popup__info_type_place');
+const linkInput = document.querySelector('.popup__info_type_email');
+
+const imageCards = document.querySelector('.cards');
+const fullscreenImg = popupBigScreen.querySelector('.popup__image');
 
 function openPopup(popup) {
   popup.classList.add('popup_opened');
-  document.addEventListener('keyup', closePopupByEsc);
+  document.addEventListener('keydown', closePopupByEsc);
+}
+
+function closePopup(popup) {
+  popup.classList.remove('popup_opened');
+  document.removeEventListener('keyup', closePopupByEsc);
 }
 
 function openPopupEditProfile() {
@@ -37,11 +48,6 @@ function openPopupAddPlace() {
   resetButtonState(popupAddPlace);
   resetSpans(popupAddPlace);
   formAddPlace.reset();
-}
-
-function closePopup(popup) {
-  popup.classList.remove('popup_opened');
-  document.removeEventListener('keyup', closePopupByEsc);
 }
 
 const resetSpans = (popup) => {
@@ -89,22 +95,18 @@ function editeProfileFormSubmitHandler(event) {
 function formAddPlaceSubmitHandler(event) {
   event.preventDefault();
   closePopup(popupAddPlace);
-  const card = new Card(placeName.value, placeLink.value, '#elements');
+  const card = new Card(placeInput.value, linkInput.value, '#elements');
   const cardElement = card.generateCard();
-  photoCards.prepend(cardElement);
+  imageCards.prepend(cardElement);
   resetSpans(popupAddPlace);
   formAddPlace.reset();
 }
 
-buttonEditProfile.addEventListener('click', openPopupEditProfile);
-
-buttonAddPlace.addEventListener('click', openPopupAddPlace);
+openPopupRenameUserButton.addEventListener('click', openPopupEditProfile);
+openPopupAppendCardButton.addEventListener('click', openPopupAddPlace);
 
 formEditProfile.addEventListener('submit', editeProfileFormSubmitHandler);
-
 formAddPlace.addEventListener('submit', formAddPlaceSubmitHandler);
-
-const formList = document.querySelectorAll(config.formSelector);
 
 formList.forEach((formElement) => {
   const formValidator = new FormValidator(config, formElement);

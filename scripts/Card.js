@@ -1,4 +1,4 @@
-import { fullPhotoPopup, fullPhoto, openPopup, closePopupByEsc } from './index.js';
+import { popupBigScreen, fullscreenImg, openPopup, closePopupByEsc } from './index.js';
 export { initialCards, Card, renderCards };
 
 const initialCards = [
@@ -52,17 +52,17 @@ class Card {
     }
 
     _setEventListeners() {
-        this._element.querySelector('.elements__photo').addEventListener('click', () => { this._handleOpenFullPhotoPopup(fullPhotoPopup); });
+        this._element.querySelector('.elements__photo').addEventListener('click', () => { this._handleOpenFullPhotoPopup(popupBigScreen); });
         this._element.querySelector('.elements__like').addEventListener('click', () => { this._handleLikeClick(event); });
         this._element.querySelector('.elements__delete').addEventListener('click', () => { this._handleDeleteButton(event); });
     }
 
 
-    _handleOpenFullPhotoPopup(fullPhotoPopup) {
-        fullPhoto.src = this._link;
-        fullPhoto.alt = this._name;
+    _handleOpenFullPhotoPopup(popupBigScreen) {
+        fullscreenImg.src = this._link;
+        fullscreenImg.alt = this._name;
         document.querySelector('.popup__name').textContent = this._name;
-        openPopup(fullPhotoPopup);
+        openPopup(popupBigScreen);
         document.addEventListener('keyup', closePopupByEsc);
     }
 
