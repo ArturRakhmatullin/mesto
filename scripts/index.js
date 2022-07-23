@@ -1,8 +1,7 @@
 import { Card } from './card.js';
 import { config, FormValidator } from './formValidator.js';
 
-const template = document.querySelector("#elements").content;
-
+const popups = document.querySelectorAll('.popup');
 const popupEditProfile = document.querySelector('.popup_type_rename');
 const popupAddPlace = document.querySelector('.popup_type_append');
 const popupBigScreen = document.querySelector('.popup_type_fullscreen');
@@ -12,7 +11,6 @@ const openPopupAppendCardButton = document.querySelector('.profile__button');
 
 const formEditProfile = document.querySelector('.popup__form_rename');
 const formAddPlace = document.querySelector('.popup__form_type_append-card');
-const formList = document.querySelectorAll(config.formSelector);
 
 const name = document.querySelector('.profile__name');
 const profession = document.querySelector('.profile__profession');
@@ -53,6 +51,9 @@ const initialCards = [
   }
 ];
 
+const formEditProfileValidator = new FormValidator(config, formEditProfile);
+const formAddPlaceValidator = new FormValidator(config, formAddPlace);
+
 function openPopup(popup) {
   popup.classList.add('popup_opened');
   document.addEventListener('keyup', closePopupByEsc);
@@ -65,17 +66,14 @@ function closePopup(popup) {
 
 function openPopupEditProfile() {
   openPopup(popupEditProfile);
-  FormValidator.toggleButtonState;
   nameInput.value = name.textContent;
   professionInput.value = profession.textContent;
 }
 
 function openPopupAddPlace() {
   openPopup(popupAddPlace);
-  FormValidator.toggleButtonState;
 }
 
-const popups = document.querySelectorAll('.popup');
 popups.forEach((popup) => {
   popup.addEventListener('click', (event) => {
     if ((event.target === event.currentTarget) || (event.target.classList.contains('popup__close'))) {
@@ -98,50 +96,21 @@ function handleProfileFormSubmit(event) {
   closePopup(popupEditProfile);
 }
 
-function handleAddPlaceSubmit(event) {
-  event.preventDefault();
-  closePopup(popupAddPlace);  
-  const card = new Card(placeInput.value, linkInput.value, '#elements');
+const createCard = (name, link) => {
+  const card = new Card(name, link, '#elements');
   const cardElement = card.generateCard();
-  imageCards.prepend(cardElement);
-}
-
-const createCard = (item) => {
-  const cardElement = template.cloneNode(true);
-  const photo = cardElement.querySelector('.elements__photo');
-  const title = cardElement.querySelector('.elements__cardname');
-  const like = cardElement.querySelector('.elements__like');
-  const deleteBtn = cardElement.querySelector('.elements__delete');
-  like.addEventListener('click', likeCard);
-  deleteBtn.addEventListener('click', deleteCard);
-  photo.addEventListener('click', openPopupFullscreen);
-  photo.src = item.link;
-  photo.alt = item.name;
-  title.textContent = item.name;
   return cardElement;
 }
 
-function likeCard(evt) {
-  const target = evt.target;
-  target.classList.toggle('elements__like_active');
-}
-
-function deleteCard(evt) {
-  evt.target.closest('.elements__card').remove();
-}
-
-function openPopupFullscreen(evt) {
-  const card = evt.target.closest('.elements__card');
-  const photo = card.querySelector('.elements__photo');
-  const cardName = card.querySelector('.elements__cardname');
-  fullscreenImg.src = photo.src;
-  fullscreenImg.alt = cardName.textContent;
-  popupName.textContent = cardName.textContent;
-  openPopup(popupBigScreen);
+function handleAddPlaceSubmit(event) {
+  event.preventDefault();
+  closePopup(popupAddPlace);
+  const cardElement = createCard(placeInput.value, linkInput.value);
+  imageCards.prepend(cardElement);
 }
 
 initialCards.forEach((item) => {
-  const cardElement = createCard(item);
+  const cardElement = createCard(item.name, item.link);
   imageCards.prepend(cardElement);
 });
 
@@ -151,9 +120,7 @@ openPopupAppendCardButton.addEventListener('click', openPopupAddPlace);
 formEditProfile.addEventListener('submit', handleProfileFormSubmit);
 formAddPlace.addEventListener('submit', handleAddPlaceSubmit);
 
-formList.forEach((formElement) => {
-  const formValidator = new FormValidator(config, formElement);
-  formValidator.enableValidation();
-})
+formEditProfileValidator.enableValidation();
+formAddPlaceValidator.enableValidation();
 
 export { popupBigScreen, fullscreenImg, popupName, openPopup, closePopupByEsc };

@@ -1,4 +1,4 @@
-import { popupBigScreen, fullscreenImg, popupName, openPopup } from './index.js';
+import { popupBigScreen, fullscreenImg, popupName, openPopup } from './index.js'; 
 
 class Card {
     constructor(name, link, cardSelector) {
@@ -17,8 +17,10 @@ class Card {
 
     generateCard() {
         this._element = this._getTemplate();
+        this._cardImage  = this._element.querySelector('.elements__photo');
         this._setEventListeners();
         this._element.querySelector('.elements__cardname').textContent = this._name;
+        this._cardImage.alt = this._name;
         this._element.querySelector('.elements__photo').src = this._link;
         return this._element;
     }
