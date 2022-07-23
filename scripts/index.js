@@ -75,17 +75,6 @@ function openPopupAddPlace() {
   FormValidator.toggleButtonState;
 }
 
-const resetSpans = (popup) => {
-  const errorSpans = popup.querySelectorAll('.popup__error');
-  const inputs = popup.querySelectorAll('.popup__info');
-  errorSpans.forEach((errorElement) => {
-    errorElement.textContent = " "
-  });
-  inputs.forEach((input) => {
-    input.classList.remove('popup__info_type_error')
-  })
-}
-
 const popups = document.querySelectorAll('.popup');
 popups.forEach((popup) => {
   popup.addEventListener('click', (event) => {
@@ -111,7 +100,7 @@ function handleProfileFormSubmit(event) {
 
 function handleAddPlaceSubmit(event) {
   event.preventDefault();
-  closePopup(popupAddPlace);
+  closePopup(popupAddPlace);  
   const card = new Card(placeInput.value, linkInput.value, '#elements');
   const cardElement = card.generateCard();
   imageCards.prepend(cardElement);
@@ -155,7 +144,6 @@ initialCards.forEach((item) => {
   const cardElement = createCard(item);
   imageCards.prepend(cardElement);
 });
-
 
 openPopupRenameUserButton.addEventListener('click', openPopupEditProfile);
 openPopupAppendCardButton.addEventListener('click', openPopupAddPlace);
