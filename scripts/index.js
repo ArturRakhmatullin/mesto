@@ -72,6 +72,8 @@ function openPopupEditProfile() {
 
 function openPopupAddPlace() {
   openPopup(popupAddPlace);
+  formAddPlace.reset();
+  formAddPlaceValidator.repeatValidation();
 }
 
 popups.forEach((popup) => {

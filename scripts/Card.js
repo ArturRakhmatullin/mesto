@@ -21,12 +21,12 @@ class Card {
         this._setEventListeners();
         this._element.querySelector('.elements__cardname').textContent = this._name;
         this._cardImage.alt = this._name;
-        this._element.querySelector('.elements__photo').src = this._link;
+        this._cardImage.src = this._link;
         return this._element;
     }
 
     _setEventListeners() {
-        this._element.querySelector('.elements__photo').addEventListener('click', () => { this._handleOpenFullPhotoPopup(popupBigScreen); });
+        this._cardImage.addEventListener('click', () => { this._handleOpenFullPhotoPopup(popupBigScreen); });
         this._element.querySelector('.elements__like').addEventListener('click', (event) => { this._handleLikeClick(event); });
         this._element.querySelector('.elements__delete').addEventListener('click', (event) => { this._handleDeleteButton(event); });
     }
