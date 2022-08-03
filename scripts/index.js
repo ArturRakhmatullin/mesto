@@ -1,5 +1,5 @@
-import { Card } from './card.js';
-import { config, FormValidator } from './formValidator.js';
+import { Card } from './Card.js';
+import { config, FormValidator } from './FormValidator.js';
 
 const popups = document.querySelectorAll('.popup');
 const popupEditProfile = document.querySelector('.popup_type_rename');
