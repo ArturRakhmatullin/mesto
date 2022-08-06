@@ -1,10 +1,9 @@
-import { popupBigScreen, fullscreenImg, popupName, openPopup } from './index.js'; 
-
-class Card {
-    constructor(name, link, cardSelector) {
+export class Card {
+    constructor({ name, link }, cardSelector, handleCardClick) {
         this._name = name;
         this._link = link;
         this._cardSelector = cardSelector;
+        this._handleCardClick = handleCardClick;
     }
 
     _getTemplate() {
@@ -26,16 +25,9 @@ class Card {
     }
 
     _setEventListeners() {
-        this._cardImage.addEventListener('click', () => { this._handleOpenFullPhotoPopup(popupBigScreen); });
+        this._cardImage.addEventListener('click', this._handleCardClick);
         this._element.querySelector('.elements__like').addEventListener('click', (event) => { this._handleLikeClick(event); });
         this._element.querySelector('.elements__delete').addEventListener('click', (event) => { this._handleDeleteButton(event); });
-    }
-
-    _handleOpenFullPhotoPopup(popupBigScreen) {
-        fullscreenImg.src = this._link;
-        fullscreenImg.alt = this._name;
-        popupName.textContent = this._name;
-        openPopup(popupBigScreen);
     }
 
     _handleLikeClick(event) {
@@ -46,5 +38,3 @@ class Card {
         this._element.remove();
     }
 }
-
-export { Card };
