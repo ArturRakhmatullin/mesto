@@ -57,8 +57,8 @@ export default class FormValidator {
 
     repeatValidation = () => {
         this.toggleButtonState();
-        this._inputList.forEach((inputElement) => {
-            this._hideInputError(inputElement)
+        this._inputList.forEach((item) => {
+            this._hideInputError(item)
         });
     }
 

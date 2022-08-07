@@ -1,18 +1,18 @@
-export class UserInfo {
-    constructor({ name, profession }) {
-      this._userNameEl = document.querySelector(name);
-      this._userProfessionEl = document.querySelector(profession);
+export default class UserInfo {
+    constructor({ placeForName, placeForProfession }) {
+      this._placeForName = placeForName;
+      this._placeForProfession = placeForProfession;
     }
   
     getUserInfo() {
       return {
-        userName: this._userNameEl.textContent,
-        userProfession: this._userProfessionEl.textContent
-      }
+        placeForName: this._placeForName.textContent,
+        placeForProfession: this._placeForProfession.textContent,
+       };
     }
   
-    setUserInfo({ userName, userProfession }) {
-      this._userNameEl.textContent = userName;
-      this._userProfessionEl.textContent = userProfession;
+    setUserInfo(info) {
+      this._placeForName.textContent = info.placeForName;
+      this._placeForProfession.textContent = info.placeForProfession;
     }
   }

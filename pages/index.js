@@ -1,15 +1,13 @@
-import './index.css';
+
 import { Card } from '../components/Card.js';
-import { FormValidator } from '../components/FormValidator.js';
+import FormValidator from '../components/FormValidator.js';
 import { Section } from "../components/Section.js";
-import { Popup } from '../components/Popup.js';
-import { PopupWithForm } from '../components/PopupWithForm.js';
-import { PopupWithImage } from '../components/PopupWithImage.js';
-import { UserInfo } from '../components/UserInfo.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import UserInfo from '../components/UserInfo.js';
 
 import {
   config,
-  popups,
   popupEditProfile,
   popupAddPlace,
   popupBigScreen,
@@ -17,83 +15,64 @@ import {
   openPopupAppendCardButton,
   formEditProfile,
   formAddPlace,
-  name,
-  profession,
+  userName,
+  userProfession,
   nameInput,
-  professionInput,
-  placeInput,
-  linkInput,
+  professionInput, 
   imageCards,
-  fullscreenImg,
-  popupName,
   initialCards,
 } from '../utils/constants.js';
 
-const userInfo = new UserInfo({ name, profession });
-
-const createCard = (name, link) => {
-  const uniqueCard = new Card(name, link, '#elements', () => {
-    popupWithImage.open(name.title, link.src);
-  });
-  const cardElement = uniqueCard.generateCard();
-  return cardElement;
-}
-
-const popupWithImage = new PopupWithImage(popupBigScreen);
-popupWithImage.setEventListeners();
+const formEditProfileValidator = new FormValidator(config, formEditProfile);
+const formAddPlaceValidator = new FormValidator(config, formAddPlace);
 
 const cardSection = new Section(
   {
     items: initialCards,
     renderer: (card) => {
-      return createCard(card);
+      const cardItem = handleNewCard(card);
+      cardSection.addItem(cardItem);
     },
   },
   imageCards
 );
-cardSection.renderItems();
 
-const formEditProfileValidator = new FormValidator(config, formEditProfile);
-const formAddPlaceValidator = new FormValidator(config, formAddPlace);
-
-const popupUserInfo = new PopupWithForm(
-  formEditProfile,
-  (data) => {
-    userInfo.setUserInfo({
-      userName: data[inputUserName],
-      userProfession: data[inputUserProfession],
-    });
-  },
-  () => {
-    const info = userInfo.getUserInfo();
-    nameInput.value = info.userName;
-    professionInput.value = info.userProfession;
-    formEditProfileValidator.repeatValidation();
-  }
-);
-popupUserInfo.setEventListeners();
-openPopupRenameUserButton.addEventListener("click", () => {
-  popupUserInfo.open();
+const userInfoEl = new UserInfo({
+  placeForName: userName,
+  placeForProfession: userProfession,
 });
 
-const popupImg = new PopupWithForm(
-  formAddPlace,
-  (data) => {
-    const card = {
-      title: data[inputCardName],
-      src: data[inputCardLink],
-      isLike: false,
-    };
-    cardSection.addItem(createCard(card));
-  },
-  () => {
-    formAddPlaceValidator.repeatValidation();
-  }
-);
-popupImg.setEventListeners();
-openPopupAppendCardButton.addEventListener("click", () => {
-  popupImg.open();
-});
+const popupUserInfo = new PopupWithForm(popupEditProfile, (data) => { userInfoEl.setUserInfo(data)});
+const popupImg = new PopupWithForm(popupAddPlace, (data) => { cardSection.addItem(handleNewCard(data));});
+const popupWithImage = new PopupWithImage(popupBigScreen);
+
+function handleCardClick(event) {
+  popupWithImage.open(event.target);
+}
+
+function handleNewCard(card) {
+  const newCard = new Card(card, '#elements', handleCardClick).generateCard();
+  return newCard;
+}
 
 formEditProfileValidator.enableValidation();
 formAddPlaceValidator.enableValidation();
+
+cardSection.renderItems();
+
+popupUserInfo.setEventListeners();
+popupImg.setEventListeners();
+popupWithImage.setEventListeners();
+
+openPopupRenameUserButton.addEventListener('click', () => {
+  popupUserInfo.open();
+  const { placeForName, placeForProfession } = userInfoEl.getUserInfo();
+  nameInput.value = placeForName;
+  professionInput.value = placeForProfession;
+  formEditProfileValidator.repeatValidation();
+});
+
+openPopupAppendCardButton.addEventListener('click', () => {
+  popupImg.open();
+  formAddPlaceValidator.repeatValidation();
+});
