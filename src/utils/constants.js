@@ -20,8 +20,18 @@ export const formAddPlace = document.querySelector('.popup__form_type_append-car
 export const userName = document.querySelector('.profile__name');
 export const userProfession = document.querySelector('.profile__profession');
 
+export const placeForName = '.profile__name';
+export const placeForProfession = '.profile__profession';
+export const inputUserName = 'username';
+export const inputUserProfession = 'userprofession';
+export const inputCardName = 'place';
+export const inputCardLink = 'email';
+
 export const nameInput = formEditProfile.querySelector('.popup__info_type_name');
 export const professionInput = formEditProfile.querySelector('.popup__info_type_profession');
+export const imgNameInput = formAddPlace.querySelector('.popup__info_type_place');
+export const imgLinkInput = formAddPlace.querySelector('.popup__info_type_email');
+export const cardName = document.querySelector('.elements__cardname');
 
 export const imageCards = document.querySelector('.cards');
 

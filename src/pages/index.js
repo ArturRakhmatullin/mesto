@@ -22,6 +22,13 @@ import {
   professionInput, 
   imageCards,
   initialCards,
+  placeForName,
+  placeForProfession,
+  inputUserName,
+  inputUserProfession,
+  imgNameInput,
+  imgLinkInput,
+  cardName,
 } from '../utils/constants.js';
 
 const formEditProfileValidator = new FormValidator(config, formEditProfile);
@@ -30,18 +37,15 @@ const formAddPlaceValidator = new FormValidator(config, formAddPlace);
 const cardSection = new Section(
   {
     items: initialCards,
-    renderer: (card) => {
-      const cardItem = handleNewCard(card);
+    renderer: (data) => {
+      const cardItem = handleNewCard(data);
       cardSection.addItem(cardItem);
     },
   },
   imageCards
 );
 
-const userInfoEl = new UserInfo({
-  placeForName: userName,
-  placeForProfession: userProfession,
-});
+const userInfoEl = new UserInfo({ placeForName, placeForProfession });
 
 const popupUserInfo = new PopupWithForm(popupEditProfile, (data) => { userInfoEl.setUserInfo(data)});
 const popupImg = new PopupWithForm(popupAddPlace, (data) => { cardSection.addItem(handleNewCard(data));});
@@ -51,8 +55,8 @@ function handleCardClick(event) {
   popupWithImage.open(event.target);
 }
 
-function handleNewCard(card) {
-  const newCard = new Card(card, '#elements', handleCardClick).generateCard();
+function handleNewCard(data) {
+  const newCard = new Card(data, '#elements', handleCardClick).generateCard();
   return newCard;
 }
 
@@ -67,13 +71,15 @@ popupWithImage.setEventListeners();
 
 openPopupRenameUserButton.addEventListener('click', () => {
   popupUserInfo.open();
-  const { placeForName, placeForProfession } = userInfoEl.getUserInfo();
-  nameInput.value = placeForName;
-  professionInput.value = placeForProfession;
+  const {} = userInfoEl.getUserInfo();
+  nameInput.value = userName.textContent;
+  professionInput.value = userProfession.textContent;
   formEditProfileValidator.repeatValidation();
 });
 
 openPopupAppendCardButton.addEventListener('click', () => {
   popupImg.open();
+  imgNameInput.value = ''
+  imgLinkInput.value = ''
   formAddPlaceValidator.repeatValidation();
 });

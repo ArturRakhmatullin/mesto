@@ -1,18 +1,21 @@
 export default class UserInfo {
     constructor({ placeForName, placeForProfession }) {
-      this._placeForName = placeForName;
-      this._placeForProfession = placeForProfession;
+      // если в конструкторе получить объект с селекторами элементов, 
+      // то код перестает работать( Прошу подсказать как лучше исправить код
+      // (если еще есть необходимость поправить код)
+      this._placeForName = document.querySelector(placeForName);
+      this._placeForProfession = document.querySelector(placeForProfession);
     }
   
     getUserInfo() {
       return {
-        placeForName: this._placeForName.textContent,
-        placeForProfession: this._placeForProfession.textContent,
+        name: this._placeForName.textContent,
+        profession: this._placeForProfession.textContent,
        };
     }
   
-    setUserInfo(info) {
-      this._placeForName.textContent = info.placeForName;
-      this._placeForProfession.textContent = info.placeForProfession;
+    setUserInfo({name, profession}) {
+      this._placeForName.textContent = name;
+      this._placeForProfession.textContent = profession;
     }
   }

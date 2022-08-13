@@ -1,11 +1,15 @@
-export class Popup {
+export default class Popup {
     constructor(popupSelector) {
       this._popupEl = popupSelector;
+  // не могу понять почему при написании document.querySelector(popupSelector) консоль выдает ошибку: 
+  // Failed to execute 'querySelector' on 'Document': '[object HTMLDivElement]' is not a valid selector.
+  // Прошу помочь (если еще есть необходимость поправить код)
+
       this.activePopupClass = 'popup_opened';
       this.closeBtnClass = 'popup__close';
       this._handleEscClose = this._handleEscClose.bind(this);
     }
-  
+
     open() {
       this._popupEl.classList.add(this.activePopupClass);
       document.addEventListener('keyup', this._handleEscClose);
