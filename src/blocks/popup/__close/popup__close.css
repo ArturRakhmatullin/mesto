@@ -2,7 +2,7 @@
     position: relative;
     width: 32px;
     height: 32px;
-    top: -10px;
+    top: -20px;
     right: -40px;
     align-self: flex-end;
     background: none;
@@ -19,13 +19,44 @@
     opacity: .6;
 }
 
+@media screen and (max-width: 570px) {
+  .popup__close {
+        right: -36px;
+        top: -12px;
+        object-fit: cover;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .popup__close {
+        right: -30px;
+  }
+}
+
+@media screen and (max-width: 530px) {
+  .popup__close {
+        right: -26px;
+  }
+}
+
+@media screen and (max-width: 500px) {
+  .popup__close {
+        right: -20px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .popup__close {
+        right: -10px;
+  }
+}
+
 @media screen and (max-width: 460px) {
   .popup__close {
         width: 20px;
         height: 20px;
         right: -28px;
         top: -8px;
-        object-fit: cover;
   }
 }
 
