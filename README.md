@@ -13,4 +13,4 @@
 
 **Адрес сервиса**
 
-А вот и адрес на [Сервис Mesto](https://arturrakhmatullin.github.io/mesto/index.html).
+А вот и адрес на [Сервис Mesto](https://arturrakhmatullin.github.io/mesto).
