@@ -31,9 +31,6 @@ import {
   cardName,
 } from '../utils/constants.js';
 
-const formEditProfileValidator = new FormValidator(config, formEditProfile);
-const formAddPlaceValidator = new FormValidator(config, formAddPlace);
-
 const cardSection = new Section(
   {
     items: initialCards,
@@ -44,12 +41,10 @@ const cardSection = new Section(
   },
   imageCards
 );
+cardSection.renderItems();
 
-const userInfoEl = new UserInfo({ placeForName, placeForProfession });
-
-const popupUserInfo = new PopupWithForm(popupEditProfile, (data) => { userInfoEl.setUserInfo(data)});
-const popupImg = new PopupWithForm(popupAddPlace, (data) => { cardSection.addItem(handleNewCard(data));});
 const popupWithImage = new PopupWithImage(popupBigScreen);
+popupWithImage.setEventListeners();
 
 function handleCardClick(event) {
   popupWithImage.open(event.target);
@@ -60,14 +55,21 @@ function handleNewCard(data) {
   return newCard;
 }
 
+const userInfoEl = new UserInfo({ placeForName, placeForProfession });
+
+const popupUserInfo = new PopupWithForm(popupEditProfile, (data) => { userInfoEl.setUserInfo(data)});
+popupUserInfo.setEventListeners();
+
+const popupImg = new PopupWithForm(popupAddPlace, (data) => { cardSection.addItem(handleNewCard(data));});
+popupImg.setEventListeners();
+
+
+const formEditProfileValidator = new FormValidator(config, formEditProfile);
+const formAddPlaceValidator = new FormValidator(config, formAddPlace);
+
 formEditProfileValidator.enableValidation();
 formAddPlaceValidator.enableValidation();
 
-cardSection.renderItems();
-
-popupUserInfo.setEventListeners();
-popupImg.setEventListeners();
-popupWithImage.setEventListeners();
 
 openPopupRenameUserButton.addEventListener('click', () => {
   popupUserInfo.open();

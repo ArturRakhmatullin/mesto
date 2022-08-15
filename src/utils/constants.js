@@ -7,7 +7,7 @@ export const config = {
     errorClass: 'popup__error_visible'
 }
 
-export const popupEditProfile = document.querySelector('.popup_type_rename');
+export const popupEditProfile = '.popup_type_rename';
 export const popupAddPlace = document.querySelector('.popup_type_append');
 export const popupBigScreen = document.querySelector('.popup_type_fullscreen');
 
@@ -33,7 +33,7 @@ export const imgNameInput = formAddPlace.querySelector('.popup__info_type_place'
 export const imgLinkInput = formAddPlace.querySelector('.popup__info_type_email');
 export const cardName = document.querySelector('.elements__cardname');
 
-export const imageCards = document.querySelector('.cards');
+export const imageCards = '.cards';
 
 //export const popups = document.querySelectorAll('.popup');
 //export const placeInput = document.querySelector('.popup__info_type_place');

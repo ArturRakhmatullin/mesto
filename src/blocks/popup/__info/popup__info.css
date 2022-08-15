@@ -1,7 +1,6 @@
 .popup__info{
     display: flex;
     padding: 0 0 12px;
-    margin-bottom: 5px;
     font-family: Inter;
     font-style: normal;
     font-weight: normal;
@@ -17,7 +16,7 @@
         margin: 0 auto 48px;
     }
     
-@media screen and (max-width: 767px) {
+@media screen and (max-width: 460px) {
     .popup__info{
         width: 238px;
     }

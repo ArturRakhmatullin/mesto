@@ -1,12 +1,11 @@
 export default class Popup {
-    constructor(popupSelector) {
-      this._popupEl = popupSelector;
-  // не могу понять почему при написании document.querySelector(popupSelector) консоль выдает ошибку: 
-  // Failed to execute 'querySelector' on 'Document': '[object HTMLDivElement]' is not a valid selector.
-  // Прошу помочь (если еще есть необходимость поправить код)
-
-      this.activePopupClass = 'popup_opened';
-      this.closeBtnClass = 'popup__close';
+    constructor({ popupSelector }) {
+      this._popupEl = document.querySelector(popupSelector);
+    // Все сделал как вы и говорили, но теперь выдает ошибку((
+    // Uncaught TypeError: Cannot read properties of null (reading 'querySelector')
+    // at new PopupWithImage
+      this.activePopupClass = '.popup_opened';
+      this.closeBtnClass = '.popup__close';
       this._handleEscClose = this._handleEscClose.bind(this);
     }
 
