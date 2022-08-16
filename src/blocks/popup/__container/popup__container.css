@@ -1,6 +1,6 @@
 .popup__container {
     min-width: 430px;
-    min-height: 320px;
+    height: 330px;
     background: #FFFFFF;
     border-radius: 10px;
     display: flex;
@@ -14,5 +14,6 @@
 @media screen and (max-width: 460px) {
     .popup__container {
         min-width: 282px;
+        height: 322px;
     }
 }

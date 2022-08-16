@@ -1,6 +1,10 @@
 .popup__label {
     max-width: 358px;
-    margin: 0 auto 25px;
+    margin: 0 auto;
+}
+
+.popup__label:last-child{
+    margin: 0 auto 48px;
 }
 
 @media screen and (max-width: 460px) {
