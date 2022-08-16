@@ -1,11 +1,8 @@
 export default class Popup {
-    constructor({ popupSelector }) {
+    constructor(popupSelector) {
       this._popupEl = document.querySelector(popupSelector);
-    // Все сделал как вы и говорили, но теперь выдает ошибку((
-    // Uncaught TypeError: Cannot read properties of null (reading 'querySelector')
-    // at new PopupWithImage
-      this.activePopupClass = '.popup_opened';
-      this.closeBtnClass = '.popup__close';
+      this.activePopupClass = 'popup_opened';
+      this.closeBtnClass = 'popup__close';
       this._handleEscClose = this._handleEscClose.bind(this);
     }
 

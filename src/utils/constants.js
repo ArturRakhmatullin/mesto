@@ -8,8 +8,8 @@ export const config = {
 }
 
 export const popupEditProfile = '.popup_type_rename';
-export const popupAddPlace = document.querySelector('.popup_type_append');
-export const popupBigScreen = document.querySelector('.popup_type_fullscreen');
+export const popupAddPlace = '.popup_type_append';
+export const popupBigScreen = '.popup_type_fullscreen';
 
 export const openPopupRenameUserButton = document.querySelector('.profile__rename');
 export const openPopupAppendCardButton = document.querySelector('.profile__button');
