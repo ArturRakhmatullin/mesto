@@ -24,11 +24,8 @@ import {
   initialCards,
   placeForName,
   placeForProfession,
-  inputUserName,
-  inputUserProfession,
   imgNameInput,
   imgLinkInput,
-  cardName,
 } from '../utils/constants.js';
 
 const cardSection = new Section(
@@ -70,7 +67,6 @@ const formAddPlaceValidator = new FormValidator(config, formAddPlace);
 formEditProfileValidator.enableValidation();
 formAddPlaceValidator.enableValidation();
 
-
 openPopupRenameUserButton.addEventListener('click', () => {
   popupUserInfo.open();
   const {} = userInfoEl.getUserInfo();
@@ -84,4 +80,16 @@ openPopupAppendCardButton.addEventListener('click', () => {
   imgNameInput.value = ''
   imgLinkInput.value = ''
   formAddPlaceValidator.repeatValidation();
+});
+
+const api = new Api({
+  fetch('https://mesto.nomoreparties.co/v1/cohort-50/cards', {
+    headers: {
+      authorization: '602fce52-47ee-402a-b2dd-b2ee3d1cac69'
+    }
+  })
+    .then(res => res.json())
+    .then((result) => {
+      console.log(result);
+    })
 });
