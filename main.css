@@ -36,6 +36,7 @@
 .popup__label{margin:0 auto;max-width:358px}.popup__label:last-child{margin:0 auto 48px}@media screen and (max-width:460px){.popup__label{max-width:238px}}
 .popup__name{color:#fff;font-size:12px;font-weight:400;line-height:1.25;margin-left:0;margin-top:10px}
 .popup__submit{-webkit-margin-before:0;-webkit-margin-after:0;align-items:center;background:#000;border:none;border-radius:2px;color:#fff;cursor:pointer;display:flex;font-size:18px;font-weight:400;height:50px;justify-content:center;line-height:22px;margin-block-end:0;margin-block-start:0;margin-bottom:30px;margin-left:36px;margin-top:18px;text-align:center;text-decoration:none;transition:opacity .5s;width:358px}@media screen and (max-width:460px){.popup__submit{font-size:14px;height:44px;line-height:17px;margin-left:22px;margin-top:10px;width:238px}}.popup__submit:hover{opacity:.8}
+.popup__submit_type_remove{margin-bottom:20px}
 .popup__submit_inactive{background-color:transparent;border:1px solid #e6e6e6;color:#e6e6e6;pointer-events:none}
 .popup__submit_disabled{background-color:#fff;border:1px solid #000;color:#000;cursor:default;opacity:.2;pointer-events:none}
 .popup_opened{-webkit-animation:fadeIn .5s;animation:fadeIn .5s;display:flex}@-webkit-keyframes fadeIn{0%{opacity:0}to{opacity:1}}@keyframes fadeIn{0%{opacity:0}to{opacity:1}}
