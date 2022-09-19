@@ -18,7 +18,7 @@
 .elements__cardname{-webkit-margin-before:0;-webkit-margin-after:0;color:#000;font-size:24px;font-weight:900;line-height:29px;margin-block-end:0;margin-block-start:0;margin-bottom:0;margin-top:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .elements__like{align-self:center;background-color:transparent;background-image:url(1ad06e85f169668a1f36.svg);background-position:50%;background-repeat:no-repeat;background-size:contain;border:none;cursor:pointer;height:19px;width:22px}.elements__like:hover{opacity:.5}
 .elements__like_active{background-image:url(35948469632d0421d697.svg)}
-.elements__like-box{align-items:center;display:flex;flex-direction:column;justify-content:space-between;max-width:22px;width:100%}
+.elements__like-box{align-items:center;display:flex;flex-direction:column;justify-content:space-between;max-height:35px;max-width:22px;width:100%}
 .elements__like-counter{font-size:13px;line-height:15.73px;margin-top:3px;text-align:center}
 .elements__delete{background-color:transparent;background-image:url(ce3b64935accf9b8212e.svg);background-position:50%;background-repeat:no-repeat;background-size:contain;border:none;cursor:pointer;height:19px;position:absolute;right:20px;top:20px;width:18px;z-index:2}.elements__delete:hover{opacity:.5}
 .footer{margin-bottom:60px;margin-top:67px;width:880px}@media screen and (max-width:880px){.footer{width:90vw}}@media screen and (max-width:321px){.footer{margin-bottom:36px;margin-top:45px;width:282px}}
