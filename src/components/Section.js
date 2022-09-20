@@ -9,7 +9,7 @@ export class Section {
     }
 
     renderItems(items) {
-      items.forEach((el) => {
+      items.reverse().forEach((el) => {
         this._renderer(el);
       });
     }

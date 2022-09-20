@@ -60,7 +60,7 @@ Promise.all([api.getProfileInfo(), api.getInitialCards()])
   .catch((err) => {console.log(`Ошибка: ${err}`)});
   
 
-const popupWithImage = new PopupWithImage(popupBigScreen);
+const popupWithImage = new PopupWithImage('.popup_type_fullscreen');
 popupWithImage.setEventListeners();
 
 const removePopup = new RemovePopup('.popup_type_remove', 
@@ -75,6 +75,7 @@ const removePopup = new RemovePopup('.popup_type_remove',
     }
   }
 );
+removePopup.setEventListeners();
 
 function handleNewCard(values) {
   const card = new Card( {
@@ -87,14 +88,16 @@ function handleNewCard(values) {
     },
     
     handleCardAddLike: (_id, card) => {
-      api.addLike(_id).then((res) => {
+      api.addLike(_id)
+      .then((res) => {
         card.setLikesCount(res.likes.length);
         card.toggleLikeButton();
       })
       .catch((err) => console.error(err))  
     },
     handleCardRemoveLike: (_id, card) => {
-      api.removeLike(_id).then((res) => {
+      api.removeLike(_id)
+      .then((res) => {
         card.setLikesCount(res.likes.length);
         card.toggleLikeButton();
       })
@@ -128,7 +131,7 @@ const editAvatarImg = new PopupWithForm('.popup_type_edit-avatar',
     callbackSubmitForm: (values) => {
       editAvatarImg.loading("Сохранение...");
       api.editAvatar(values.avatar)
-      .then(data => {
+      .then((data) => {
       userInfoEl.setUserAvatar(data);
       editAvatarImg.close();
     })
@@ -145,7 +148,7 @@ const popupImg = new PopupWithForm('.popup_type_append',
     callbackSubmitForm: (values) => {
     popupImg.loading("Сохранение...");
     api.addCard(values.name, values.link)
-    .then(data => {
+    .then((data) => {
       const cardItem = handleNewCard(data);
       cardSection.addItem(cardItem);
       popupImg.close()
