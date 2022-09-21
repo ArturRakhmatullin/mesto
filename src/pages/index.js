@@ -112,7 +112,7 @@ function handleNewCard(values) {
 const popupUserInfo = new PopupWithForm('.popup_type_rename',
   {
     callbackSubmitForm: (values) => {
-      popupUserInfo.loading("Сохранение...");
+      popupUserInfo.loading(true);
       api.editProfile(values.name, values.about)
       .then(data => {
         userInfoEl.setUserInfo(data);
@@ -120,7 +120,7 @@ const popupUserInfo = new PopupWithForm('.popup_type_rename',
       })
       .catch((err) => {console.log(`Ошибка: ${err}`)})
       .finally(() => {
-      popupUserInfo.loading("Сохранение...");
+      popupUserInfo.loading(false);
       });
   }
 });
@@ -129,7 +129,7 @@ popupUserInfo.setEventListeners();
 const editAvatarImg = new PopupWithForm('.popup_type_edit-avatar', 
   {
     callbackSubmitForm: (values) => {
-      editAvatarImg.loading("Сохранение...");
+      editAvatarImg.loading(true);
       api.editAvatar(values.avatar)
       .then((data) => {
       userInfoEl.setUserAvatar(data);
@@ -137,7 +137,7 @@ const editAvatarImg = new PopupWithForm('.popup_type_edit-avatar',
     })
     .catch((err) => {console.log(`Ошибка: ${err}`)})
     .finally(() => {
-      editAvatarImg.loading("Сохранить");
+      editAvatarImg.loading(false);
     });
   }
 });
@@ -146,7 +146,7 @@ editAvatarImg.setEventListeners();
 const popupImg = new PopupWithForm('.popup_type_append',
   {
     callbackSubmitForm: (values) => {
-    popupImg.loading("Сохранение...");
+    popupImg.loading(true);
     api.addCard(values.name, values.link)
     .then((data) => {
       const cardItem = handleNewCard(data);
@@ -155,7 +155,7 @@ const popupImg = new PopupWithForm('.popup_type_append',
     })
     .catch((err) => {console.log(`Ошибка: ${err}`)})
     .finally(() => {
-      popupImg.loading("Создать");
+      popupImg.loading(false);
     });
   }
 });

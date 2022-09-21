@@ -24,6 +24,6 @@ export default class Popup {
       this._popupEl.addEventListener('click', event => {
         if (event.target === event.currentTarget || event.target.classList.contains(this.closeBtnClass))
           this.close();
-      }, { once: true });
+      });
     }
   }
