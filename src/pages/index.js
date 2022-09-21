@@ -41,7 +41,6 @@ const userInfoEl = new UserInfo({
   avatarImg: '.profile__avatar',
 });
 
-
 const cardSection = new Section(
   {
     renderer: (item) => {
@@ -120,7 +119,7 @@ const popupUserInfo = new PopupWithForm('.popup_type_rename',
       })
       .catch((err) => {console.log(`Ошибка: ${err}`)})
       .finally(() => {
-      popupUserInfo.loading(false);
+        popupUserInfo.loading(false);
       });
   }
 });
@@ -131,7 +130,7 @@ const editAvatarImg = new PopupWithForm('.popup_type_edit-avatar',
     callbackSubmitForm: (values) => {
       editAvatarImg.loading(true);
       api.editAvatar(values.avatar)
-      .then((data) => {
+      .then(data => {
       userInfoEl.setUserAvatar(data);
       editAvatarImg.close();
     })
@@ -148,7 +147,7 @@ const popupImg = new PopupWithForm('.popup_type_append',
     callbackSubmitForm: (values) => {
     popupImg.loading(true);
     api.addCard(values.name, values.link)
-    .then((data) => {
+    .then(data => {
       const cardItem = handleNewCard(data);
       cardSection.addItem(cardItem);
       popupImg.close()
