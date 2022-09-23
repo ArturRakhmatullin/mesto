@@ -16,17 +16,6 @@ export default class PopupWithForm extends Popup {
       event.preventDefault();
       this._callbackSubmitForm(this._getInputValues());
     });
-    //    this._formEl.addEventListener('submit', () => {
-      // перед запросом сохраняем изначальный текст кнопки
-    //  const initialText = this._submitButton.textContent;
-      // меняем его, чтобы показать пользователю ожидание
-    //  this._submitButton.textContent = 'Сохранение...';
-    //  this._callbackSubmitForm(this._getInputValues())
-    //    .then(() => this.close()) // закрывается попап в `then`
-    //    .finally(() => {
-    //      this._submitButton.textContent = initialText;
-    //    }) // в любом случае меняется текст кнопки обратно на начальный в `finally`
-    //});
   }
 
   _getInputValues() {
